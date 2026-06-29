@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BMC V3 Usage Documentation</title>
+  <link rel="stylesheet" href="bmc-v3.css">
+  <style>
+    body { margin:0; background:#f5f3f1; }
+    .docs-nav { position:sticky; top:0; z-index:10; padding:.9rem 0; background:#242122; color:#fff; }
+    .docs-nav a { color:#fff; text-decoration:none; font-weight:700; }
+    .docs-code { display:block; padding:1rem; overflow:auto; background:#242122; color:#fff; white-space:pre; }
+    .docs-class-list { columns:3 260px; column-gap:2rem; }
+    .docs-class-list code { display:inline-block; margin-bottom:.45rem; color:#242122 !important; background:transparent !important; }
+    .docs-section { scroll-margin-top:80px; }
+  </style>
+</head>
+<body>
+<div class="bmc-v3">
+  <nav class="docs-nav">
+    <div class="bmc-container bmc-d-flex bmc-flex-wrap bmc-gap-2">
+      <a href="#start">Start</a><a href="#layout">Layout</a><a href="#type">Typography</a><a href="#components">Components</a><a href="#utilities">Utilities</a><a href="#index">Class Index</a>
+    </div>
+  </nav>
+  <header class="bmc-section bmc-section-dark" id="start">
+    <div class="bmc-container">
+      <span class="bmc-eyebrow">Bishop Moore Catholic</span>
+      <h1 class="bmc-display-2 bmc-heading-split bmc-text-white">BMC V3 <strong>Usage Guide</strong></h1>
+      <p class="bmc-lead bmc-text-white">A scoped, Bootstrap-style reference for layout, components, typography, and utility classes.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="bmc-section docs-section" id="quick-start">
+      <div class="bmc-container">
+        <h2 class="bmc-heading-1">Quick Start</h2>
+        <p>Load the stylesheet, then wrap framework content once with <code>bmc-v3</code>. Add the website's existing <code>button</code> class to button links to avoid global link-color overrides.</p>
+        <code class="docs-code">&lt;link rel="stylesheet" href="bmc-v3.css"&gt;
+
+&lt;div class="bmc-v3"&gt;
+  &lt;section class="bmc-section"&gt;
+    &lt;div class="bmc-container"&gt;...&lt;/div&gt;
+  &lt;/section&gt;
+&lt;/div&gt;</code>
+      </div>
+    </section>
+
+    <section class="bmc-section bmc-section-light docs-section" id="layout">
+      <div class="bmc-container">
+        <h2 class="bmc-heading-1">Layout</h2>
+        <h3>Containers</h3>
+        <table class="bmc-table bmc-table-striped"><tbody>
+          <tr><td><code>bmc-container</code></td><td>Centered container, maximum 1200px.</td></tr>
+          <tr><td><code>bmc-container-fluid</code></td><td>Full-width container with responsive side padding.</td></tr>
+          <tr><td><code>bmc-container-narrow</code></td><td>Centered reading-width container, maximum 850px.</td></tr>
+        </tbody></table>
+        <h3 class="bmc-mt-4">Sections</h3>
+        <p><code>bmc-section</code>, <code>bmc-section-sm</code>, <code>bmc-section-dark</code>, <code>bmc-section-light</code>, and <code>bmc-section-gold</code>.</p>
+        <h3 class="bmc-mt-4">12-Column Grid</h3>
+        <p>Use <code>bmc-row</code> with <code>bmc-col-1</code> through <code>bmc-col-12</code>. Responsive forms are available at <code>sm</code>, <code>md</code>, and <code>lg</code>, such as <code>bmc-col-md-6</code>.</p>
+        <code class="docs-code">&lt;div class="bmc-row bmc-g-3"&gt;
+  &lt;div class="bmc-col-12 bmc-col-md-6"&gt;...&lt;/div&gt;
+  &lt;div class="bmc-col-12 bmc-col-md-6"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code>
+        <h3 class="bmc-mt-4">CSS Grid</h3>
+        <p><code>bmc-grid</code> plus <code>bmc-grid-2</code>, <code>bmc-grid-3</code>, <code>bmc-grid-4</code>, or <code>bmc-grid-auto</code>.</p>
+      </div>
+    </section>
+
+    <section class="bmc-section docs-section" id="type">
+      <div class="bmc-container">
+        <h2 class="bmc-heading-1">Typography</h2>
+        <p>Semantic <code>h1</code> through <code>h6</code> receive responsive defaults inside the namespace.</p>
+        <table class="bmc-table bmc-table-striped"><thead><tr><th>Class</th><th>Use</th></tr></thead><tbody>
+          <tr><td><code>bmc-display-1</code>, <code>bmc-display-2</code></td><td>Largest campaign and hero titles.</td></tr>
+          <tr><td><code>bmc-heading-1</code> through <code>bmc-heading-3</code></td><td>Reusable visual heading sizes independent of semantic level.</td></tr>
+          <tr><td><code>bmc-heading-light</code>, <code>-regular</code>, <code>-medium</code>, <code>-semibold</code>, <code>-bold</code></td><td>Heading-weight utilities.</td></tr>
+          <tr><td><code>bmc-heading-split</code></td><td>Light title with bold text inside <code>strong</code> or <code>bmc-heading-emphasis</code>.</td></tr>
+          <tr><td><code>bmc-eyebrow</code></td><td>Small uppercase gold section label.</td></tr>
+          <tr><td><code>bmc-lead</code>, <code>bmc-small</code>, <code>bmc-xsmall</code></td><td>Body-size variants.</td></tr>
+        </tbody></table>
+      </div>
+    </section>
+
+    <section class="bmc-section bmc-section-light docs-section" id="components">
+      <div class="bmc-container">
+        <h2 class="bmc-heading-1">Components</h2>
+        <h3>Buttons</h3>
+        <p><code>bmc-btn</code>, <code>bmc-btn-dark</code>, <code>bmc-btn-outline</code>, <code>bmc-btn-light</code>, <code>bmc-btn-sm</code>, <code>bmc-btn-lg</code>, and <code>bmc-btn-block</code>.</p>
+        <code class="docs-code">&lt;a class="bmc-btn bmc-btn-dark button" href="#"&gt;Dark Button&lt;/a&gt;</code>
+        <h3 class="bmc-mt-4">Pills</h3>
+        <p><code>bmc-pill</code> with <code>bmc-pill-gold</code>, <code>bmc-pill-dark</code>, <code>bmc-pill-outline</code>, <code>bmc-pill-sm</code>, or <code>bmc-pill-lg</code>.</p>
+        <h3 class="bmc-mt-4">Cards</h3>
+        <p><code>bmc-card</code>, <code>bmc-card-dark</code>, <code>bmc-card-gold</code>, and <code>bmc-card-white</code>.</p>
+        <h3 class="bmc-mt-4">Legacy and Image Cards</h3>
+        <p>Use <code>bmc-legacy-card</code> for the image-and-gold-caption design. Images default to grayscale; add <code>bmc-image-current</code> for full color. Ratio modifiers include <code>bmc-legacy-card-landscape</code> and <code>bmc-legacy-card-square</code>.</p>
+        <code class="docs-code">&lt;figure class="bmc-legacy-card"&gt;
+  &lt;img src="..." alt="..."&gt;
+  &lt;figcaption&gt;Caption&lt;/figcaption&gt;
+&lt;/figure&gt;</code>
+        <h3 class="bmc-mt-4">Additional Components</h3>
+        <ul class="bmc-list-check">
+          <li><code>bmc-callout</code></li><li><code>bmc-quote</code></li><li><code>bmc-stat</code>, <code>bmc-stat-value</code>, <code>bmc-stat-label</code></li>
+          <li><code>bmc-hex</code> and its size/color variants</li><li><code>bmc-hero</code> family</li><li><code>bmc-ratio</code> family</li><li><code>bmc-table</code> family</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="bmc-section docs-section" id="utilities">
+      <div class="bmc-container">
+        <h2 class="bmc-heading-1">Utilities</h2>
+        <div class="bmc-grid bmc-grid-2">
+          <div><h3>Text</h3><p>Alignment, wrapping, casing, weight, font family, and color helpers use the <code>bmc-text-*</code>, <code>bmc-fw-*</code>, and <code>bmc-font-*</code> patterns.</p></div>
+          <div><h3>Display and Flex</h3><p><code>bmc-d-*</code>, <code>bmc-flex-*</code>, <code>bmc-justify-*</code>, and <code>bmc-align-*</code>.</p></div>
+          <div><h3>Spacing</h3><p>Margin and padding utilities use values 0 through 5: <code>bmc-m-*</code>, <code>bmc-mt-*</code>, <code>bmc-mb-*</code>, <code>bmc-my-*</code>, <code>bmc-p-*</code>, and related forms.</p></div>
+          <div><h3>Sizing and Position</h3><p><code>bmc-w-25</code>, <code>bmc-w-50</code>, <code>bmc-w-75</code>, <code>bmc-w-100</code>, <code>bmc-h-100</code>, position, overflow, and visually-hidden helpers.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bmc-section bmc-section-dark docs-section" id="index">
+      <div class="bmc-container">
+        <h2 class="bmc-heading-1 bmc-text-white">Complete Class Index</h2>
+        <p class="bmc-text-white">This list is generated from the current stylesheet.</p>
+        <div class="docs-class-list bmc-card bmc-card-white"><code>.bmc-align-center</code><br><code>.bmc-align-end</code><br><code>.bmc-align-start</code><br><code>.bmc-align-stretch</code><br><code>.bmc-btn</code><br><code>.bmc-btn-block</code><br><code>.bmc-btn-dark</code><br><code>.bmc-btn-lg</code><br><code>.bmc-btn-light</code><br><code>.bmc-btn-outline</code><br><code>.bmc-btn-sm</code><br><code>.bmc-callout</code><br><code>.bmc-capitalize</code><br><code>.bmc-card</code><br><code>.bmc-card-dark</code><br><code>.bmc-card-gold</code><br><code>.bmc-card-white</code><br><code>.bmc-col</code><br><code>.bmc-col-1</code><br><code>.bmc-col-10</code><br><code>.bmc-col-11</code><br><code>.bmc-col-12</code><br><code>.bmc-col-2</code><br><code>.bmc-col-3</code><br><code>.bmc-col-4</code><br><code>.bmc-col-5</code><br><code>.bmc-col-6</code><br><code>.bmc-col-7</code><br><code>.bmc-col-8</code><br><code>.bmc-col-9</code><br><code>.bmc-col-auto</code><br><code>.bmc-col-lg-1</code><br><code>.bmc-col-lg-10</code><br><code>.bmc-col-lg-11</code><br><code>.bmc-col-lg-12</code><br><code>.bmc-col-lg-2</code><br><code>.bmc-col-lg-3</code><br><code>.bmc-col-lg-4</code><br><code>.bmc-col-lg-5</code><br><code>.bmc-col-lg-6</code><br><code>.bmc-col-lg-7</code><br><code>.bmc-col-lg-8</code><br><code>.bmc-col-lg-9</code><br><code>.bmc-col-md-1</code><br><code>.bmc-col-md-10</code><br><code>.bmc-col-md-11</code><br><code>.bmc-col-md-12</code><br><code>.bmc-col-md-2</code><br><code>.bmc-col-md-3</code><br><code>.bmc-col-md-4</code><br><code>.bmc-col-md-5</code><br><code>.bmc-col-md-6</code><br><code>.bmc-col-md-7</code><br><code>.bmc-col-md-8</code><br><code>.bmc-col-md-9</code><br><code>.bmc-col-sm-1</code><br><code>.bmc-col-sm-10</code><br><code>.bmc-col-sm-11</code><br><code>.bmc-col-sm-12</code><br><code>.bmc-col-sm-2</code><br><code>.bmc-col-sm-3</code><br><code>.bmc-col-sm-4</code><br><code>.bmc-col-sm-5</code><br><code>.bmc-col-sm-6</code><br><code>.bmc-col-sm-7</code><br><code>.bmc-col-sm-8</code><br><code>.bmc-col-sm-9</code><br><code>.bmc-container</code><br><code>.bmc-container-fluid</code><br><code>.bmc-container-narrow</code><br><code>.bmc-d-block</code><br><code>.bmc-d-flex</code><br><code>.bmc-d-grid</code><br><code>.bmc-d-inline</code><br><code>.bmc-d-inline-block</code><br><code>.bmc-d-inline-flex</code><br><code>.bmc-d-lg-block</code><br><code>.bmc-d-lg-flex</code><br><code>.bmc-d-lg-none</code><br><code>.bmc-d-md-block</code><br><code>.bmc-d-md-flex</code><br><code>.bmc-d-md-none</code><br><code>.bmc-d-none</code><br><code>.bmc-d-sm-block</code><br><code>.bmc-d-sm-flex</code><br><code>.bmc-d-sm-none</code><br><code>.bmc-display-1</code><br><code>.bmc-display-2</code><br><code>.bmc-divider</code><br><code>.bmc-eyebrow</code><br><code>.bmc-flex-column</code><br><code>.bmc-flex-nowrap</code><br><code>.bmc-flex-row</code><br><code>.bmc-flex-wrap</code><br><code>.bmc-font-serif</code><br><code>.bmc-fw-bold</code><br><code>.bmc-fw-medium</code><br><code>.bmc-fw-normal</code><br><code>.bmc-fw-semibold</code><br><code>.bmc-g-0</code><br><code>.bmc-g-1</code><br><code>.bmc-g-2</code><br><code>.bmc-g-3</code><br><code>.bmc-g-4</code><br><code>.bmc-g-5</code><br><code>.bmc-gap-0</code><br><code>.bmc-gap-1</code><br><code>.bmc-gap-2</code><br><code>.bmc-gap-3</code><br><code>.bmc-gap-4</code><br><code>.bmc-gap-5</code><br><code>.bmc-grid</code><br><code>.bmc-grid-2</code><br><code>.bmc-grid-3</code><br><code>.bmc-grid-4</code><br><code>.bmc-grid-auto</code><br><code>.bmc-h-100</code><br><code>.bmc-heading-1</code><br><code>.bmc-heading-2</code><br><code>.bmc-heading-3</code><br><code>.bmc-heading-bold</code><br><code>.bmc-heading-emphasis</code><br><code>.bmc-heading-light</code><br><code>.bmc-heading-medium</code><br><code>.bmc-heading-regular</code><br><code>.bmc-heading-semibold</code><br><code>.bmc-heading-split</code><br><code>.bmc-hero</code><br><code>.bmc-hero-content</code><br><code>.bmc-hero-media</code><br><code>.bmc-hero-overlay</code><br><code>.bmc-hex</code><br><code>.bmc-hex-content</code><br><code>.bmc-hex-dark</code><br><code>.bmc-hex-label</code><br><code>.bmc-hex-lg</code><br><code>.bmc-hex-light</code><br><code>.bmc-hex-outline</code><br><code>.bmc-hex-sm</code><br><code>.bmc-hex-value</code><br><code>.bmc-image-card</code><br><code>.bmc-image-card-body</code><br><code>.bmc-image-card-caption</code><br><code>.bmc-image-card-landscape</code><br><code>.bmc-image-card-square</code><br><code>.bmc-image-current</code><br><code>.bmc-italic</code><br><code>.bmc-justify-around</code><br><code>.bmc-justify-between</code><br><code>.bmc-justify-center</code><br><code>.bmc-justify-end</code><br><code>.bmc-justify-start</code><br><code>.bmc-lead</code><br><code>.bmc-legacy-card</code><br><code>.bmc-legacy-card-landscape</code><br><code>.bmc-legacy-card-square</code><br><code>.bmc-list-check</code><br><code>.bmc-list-inline</code><br><code>.bmc-list-unstyled</code><br><code>.bmc-lowercase</code><br><code>.bmc-m-0</code><br><code>.bmc-m-1</code><br><code>.bmc-m-2</code><br><code>.bmc-m-3</code><br><code>.bmc-m-4</code><br><code>.bmc-m-5</code><br><code>.bmc-mb-0</code><br><code>.bmc-mb-1</code><br><code>.bmc-mb-2</code><br><code>.bmc-mb-3</code><br><code>.bmc-mb-4</code><br><code>.bmc-mb-5</code><br><code>.bmc-media-cover</code><br><code>.bmc-mt-0</code><br><code>.bmc-mt-1</code><br><code>.bmc-mt-2</code><br><code>.bmc-mt-3</code><br><code>.bmc-mt-4</code><br><code>.bmc-mt-5</code><br><code>.bmc-mx-auto</code><br><code>.bmc-my-0</code><br><code>.bmc-my-1</code><br><code>.bmc-my-2</code><br><code>.bmc-my-3</code><br><code>.bmc-my-4</code><br><code>.bmc-my-5</code><br><code>.bmc-overflow-auto</code><br><code>.bmc-overflow-hidden</code><br><code>.bmc-p-0</code><br><code>.bmc-p-1</code><br><code>.bmc-p-2</code><br><code>.bmc-p-3</code><br><code>.bmc-p-4</code><br><code>.bmc-p-5</code><br><code>.bmc-pill</code><br><code>.bmc-pill-dark</code><br><code>.bmc-pill-gold</code><br><code>.bmc-pill-lg</code><br><code>.bmc-pill-outline</code><br><code>.bmc-pill-sm</code><br><code>.bmc-position-absolute</code><br><code>.bmc-position-fixed</code><br><code>.bmc-position-relative</code><br><code>.bmc-px-1</code><br><code>.bmc-px-2</code><br><code>.bmc-px-3</code><br><code>.bmc-px-4</code><br><code>.bmc-py-1</code><br><code>.bmc-py-2</code><br><code>.bmc-py-3</code><br><code>.bmc-py-4</code><br><code>.bmc-quote</code><br><code>.bmc-ratio</code><br><code>.bmc-ratio-16x9</code><br><code>.bmc-ratio-1x1</code><br><code>.bmc-ratio-3x4</code><br><code>.bmc-ratio-4x3</code><br><code>.bmc-row</code><br><code>.bmc-section</code><br><code>.bmc-section-dark</code><br><code>.bmc-section-gold</code><br><code>.bmc-section-light</code><br><code>.bmc-section-sm</code><br><code>.bmc-small</code><br><code>.bmc-stat</code><br><code>.bmc-stat-label</code><br><code>.bmc-stat-value</code><br><code>.bmc-table</code><br><code>.bmc-table-borderless</code><br><code>.bmc-table-striped</code><br><code>.bmc-table-wrap</code><br><code>.bmc-text-balance</code><br><code>.bmc-text-black</code><br><code>.bmc-text-center</code><br><code>.bmc-text-gold</code><br><code>.bmc-text-left</code><br><code>.bmc-text-lg-center</code><br><code>.bmc-text-lg-left</code><br><code>.bmc-text-lg-right</code><br><code>.bmc-text-md-center</code><br><code>.bmc-text-md-left</code><br><code>.bmc-text-md-right</code><br><code>.bmc-text-muted</code><br><code>.bmc-text-nowrap</code><br><code>.bmc-text-pretty</code><br><code>.bmc-text-right</code><br><code>.bmc-text-sm-center</code><br><code>.bmc-text-sm-left</code><br><code>.bmc-text-sm-right</code><br><code>.bmc-text-white</code><br><code>.bmc-text-wrap</code><br><code>.bmc-uppercase</code><br><code>.bmc-v3</code><br><code>.bmc-visually-hidden</code><br><code>.bmc-w-100</code><br><code>.bmc-w-25</code><br><code>.bmc-w-50</code><br><code>.bmc-w-75</code><br><code>.bmc-xsmall</code><br></div>
+      </div>
+    </section>
+  </main>
+</div>
+</body>
+</html>

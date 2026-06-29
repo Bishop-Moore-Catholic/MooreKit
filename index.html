@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BMC V3 Component Boilerplate</title>
+  <link rel="stylesheet" href="bmc-v3.css">
+  <style>
+    body { margin: 0; background: #fff; }
+    .demo-label { margin-bottom: .75rem; font-size: .72rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #777; }
+    .demo-swatch { min-height: 90px; display: grid; place-items: center; padding: 1rem; text-align: center; }
+  </style>
+</head>
+<body>
+  <main class="bmc-v3">
+    <section class="bmc-hero">
+      <img class="bmc-hero-media" src="assets/images/hero-stage.png" alt="Students performing on stage">
+      <div class="bmc-hero-overlay"></div>
+      <div class="bmc-container bmc-hero-content">
+        <span class="bmc-eyebrow bmc-text-white">BMC V3 Component Library</span>
+        <h1 class="bmc-display-1 bmc-text-white bmc-mb-2">Reusable Components</h1>
+        <p class="bmc-lead bmc-text-white bmc-mb-3">A lightweight, scoped CSS framework for Bishop Moore Catholic webpages.</p>
+        <div class="bmc-d-flex bmc-flex-wrap bmc-gap-2">
+          <a class="bmc-btn button" href="#components">View Components</a>
+          <a class="bmc-btn bmc-btn-light button" href="#utilities">View Utilities</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bmc-section bmc-section-light" id="typography">
+      <div class="bmc-container">
+        <span class="bmc-eyebrow">Type System</span>
+        <h2 class="bmc-heading-1 bmc-mb-4">Typography</h2>
+
+        <div class="bmc-card bmc-card-white">
+          <h1>Heading 1</h1>
+          <p class="bmc-text-muted">Use for the main page title. One H1 per page is recommended.</p>
+          <hr class="bmc-divider bmc-my-3">
+
+          <h2>Heading 2</h2>
+          <p class="bmc-text-muted">Use for major page sections.</p>
+          <hr class="bmc-divider bmc-my-3">
+
+          <h3>Heading 3</h3>
+          <p class="bmc-text-muted">Use for component and subsection titles.</p>
+          <hr class="bmc-divider bmc-my-3">
+
+          <h4>Heading 4</h4>
+          <p class="bmc-text-muted">Use for smaller content groupings.</p>
+          <hr class="bmc-divider bmc-my-3">
+
+          <h5>Heading 5</h5>
+          <p class="bmc-text-muted">Use for labels and tertiary headings.</p>
+          <hr class="bmc-divider bmc-my-3">
+
+          <h6>Heading 6</h6>
+          <p class="bmc-text-muted">Use for the smallest semantic heading level.</p>
+          <hr class="bmc-divider bmc-my-3">
+
+          <p>This is a standard paragraph. It demonstrates the default body type, line height, and spacing inside the <code>bmc-v3</code> namespace.</p>
+          <p class="bmc-lead">This is lead text for introductions and important opening statements.</p>
+          <p class="bmc-small">This is small text.</p>
+          <p class="bmc-xsmall">This is extra-small text.</p>
+          <hr class="bmc-divider bmc-my-3">
+
+          <h3 class="bmc-heading-3 bmc-mb-3">Heading Weight Variations</h3>
+          <p class="bmc-heading-2 bmc-heading-light">Light heading</p>
+          <p class="bmc-heading-2 bmc-heading-regular">Regular heading</p>
+          <p class="bmc-heading-2 bmc-heading-medium">Medium heading</p>
+          <p class="bmc-heading-2 bmc-heading-semibold">Semibold heading</p>
+          <p class="bmc-heading-2 bmc-heading-bold">Bold heading</p>
+          <p class="bmc-heading-2 bmc-heading-split bmc-mb-0">Split <strong>Heading</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="bmc-section" id="components">
+      <div class="bmc-container">
+        <span class="bmc-eyebrow">Core Pattern</span>
+        <h2 class="bmc-heading-1 bmc-mb-3">Section Heading</h2>
+        <p class="bmc-lead bmc-text-muted bmc-mb-5">Use the <code>bmc-v3</code> wrapper once around the content area. Every component and utility is scoped beneath that namespace.</p>
+
+        <div class="bmc-row bmc-g-4 bmc-mb-5">
+          <div class="bmc-col-12 bmc-col-md-6">
+            <div class="bmc-card">
+              <div class="demo-label">Standard Card</div>
+              <h3 class="bmc-heading-3">Card Title</h3>
+              <p>A flexible content block for highlights, program summaries, calls to action, and supporting information.</p>
+              <a class="bmc-btn button" href="#">Learn More</a>
+            </div>
+          </div>
+          <div class="bmc-col-12 bmc-col-md-6">
+            <div class="bmc-card bmc-card-dark">
+              <div class="demo-label bmc-text-white">Dark Card</div>
+              <h3 class="bmc-heading-3 bmc-text-white">Dark Card Title</h3>
+              <p class="bmc-text-white">Use for high-contrast feature blocks and campaign messaging.</p>
+              <a class="bmc-btn bmc-btn-light button" href="#">Take Action</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bmc-grid bmc-grid-3 bmc-mb-5">
+          <article class="bmc-stat">
+            <span class="bmc-stat-value">56</span>
+            <span class="bmc-stat-label">Elective Courses</span>
+            <p class="bmc-small bmc-text-muted bmc-mt-2">Short supporting description.</p>
+          </article>
+          <article class="bmc-stat">
+            <span class="bmc-stat-value">100%</span>
+            <span class="bmc-stat-label">Participation</span>
+            <p class="bmc-small bmc-text-muted bmc-mt-2">Short supporting description.</p>
+          </article>
+          <article class="bmc-stat">
+            <span class="bmc-stat-value">19</span>
+            <span class="bmc-stat-label">Faculty &amp; Assistants</span>
+            <p class="bmc-small bmc-text-muted bmc-mt-2">Short supporting description.</p>
+          </article>
+        </div>
+
+        <div class="bmc-quote bmc-mb-5">
+          <blockquote>“This is an example of the reusable quote component used throughout campaign and program pages.”</blockquote>
+          <cite>Example Attribution</cite>
+        </div>
+
+        <div class="bmc-callout bmc-mb-5">
+          <h3 class="bmc-heading-3">Callout Component</h3>
+          <p class="bmc-mb-0">Use this for important notes, campaign updates, deadlines, or explanatory information.</p>
+        </div>
+
+        <div class="bmc-row bmc-g-4 bmc-align-center bmc-mb-5">
+          <div class="bmc-col-12 bmc-col-lg-6">
+            <div class="bmc-ratio bmc-ratio-16x9">
+              <iframe src="https://www.youtube.com/embed/hlRIh2b76DQ" title="Example responsive video" allowfullscreen></iframe>
+            </div>
+          </div>
+          <div class="bmc-col-12 bmc-col-lg-6">
+            <span class="bmc-eyebrow">Responsive Media</span>
+            <h3 class="bmc-heading-2">Video and Image Ratios</h3>
+            <p>Use <code>bmc-ratio</code> with <code>bmc-ratio-16x9</code>, <code>bmc-ratio-4x3</code>, <code>bmc-ratio-1x1</code>, or <code>bmc-ratio-3x4</code>.</p>
+          </div>
+        </div>
+
+        <div class="bmc-mb-5">
+          <h3 class="bmc-heading-2 bmc-mb-3">Hexagons</h3>
+          <div class="bmc-d-flex bmc-flex-wrap bmc-align-center bmc-gap-4">
+            <div class="bmc-hex bmc-hex-sm">
+              <div class="bmc-hex-content">
+                <span class="bmc-hex-value">6</span>
+                <span class="bmc-hex-label">Projects Completed</span>
+              </div>
+            </div>
+
+            <div class="bmc-hex">
+              <div class="bmc-hex-content">
+                <span class="bmc-hex-value">25</span>
+                <span class="bmc-hex-label">Founding Members</span>
+              </div>
+            </div>
+
+            <div class="bmc-hex bmc-hex-lg bmc-hex-dark">
+              <div class="bmc-hex-content">
+                <span class="bmc-hex-value">70</span>
+                <span class="bmc-hex-label">Years of Faith, Excellence &amp; Service</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bmc-mb-5">
+          <h3 class="bmc-heading-2 bmc-mb-3">Pills</h3>
+          <div class="bmc-d-flex bmc-flex-wrap bmc-gap-2">
+            <span class="bmc-pill">Default</span>
+            <span class="bmc-pill bmc-pill-gold">Gold</span>
+            <span class="bmc-pill bmc-pill-dark">Dark</span>
+            <span class="bmc-pill bmc-pill-outline">Outline</span>
+            <span class="bmc-pill bmc-pill-sm">Small</span>
+            <span class="bmc-pill bmc-pill-lg">Large</span>
+          </div>
+        </div>
+
+        <div class="bmc-mb-5">
+          <h3 class="bmc-heading-2 bmc-mb-3">Legacy Image Cards</h3>
+          <div class="bmc-grid bmc-grid-4">
+            <figure class="bmc-legacy-card">
+              <img src="assets/images/legacy-football-historic.png" alt="Historic Bishop Moore football field" loading="lazy">
+              <figcaption>Historic Campus</figcaption>
+            </figure>
+            <figure class="bmc-legacy-card">
+              <img src="assets/images/legacy-science-historic.jpg" alt="Historic science laboratory" loading="lazy">
+              <figcaption>Past Science Labs</figcaption>
+            </figure>
+            <figure class="bmc-legacy-card">
+              <img class="bmc-image-current" src="assets/images/hero-stage.png" alt="Current Bishop Moore stage production" loading="lazy">
+              <figcaption>Arts Today</figcaption>
+            </figure>
+            <figure class="bmc-legacy-card">
+              <img class="bmc-image-current" src="assets/images/legacy-science-current.jpg" alt="Students in a modern science laboratory" loading="lazy">
+              <figcaption>Learning Today</figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <div class="bmc-table-wrap bmc-mb-5">
+          <table class="bmc-table bmc-table-striped" aria-label="Sample table">
+            <thead>
+              <tr><th>Component</th><th>Class</th><th>Purpose</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Button</td><td><code>bmc-btn</code></td><td>Primary action</td></tr>
+              <tr><td>Card</td><td><code>bmc-card</code></td><td>Content grouping</td></tr>
+              <tr><td>Statistic</td><td><code>bmc-stat</code></td><td>Numeric highlight</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3 class="bmc-heading-2 bmc-mb-3">Buttons</h3>
+        <div class="bmc-d-flex bmc-flex-wrap bmc-gap-2 bmc-mb-5">
+          <a class="bmc-btn button" href="#">Primary</a>
+          <a class="bmc-btn bmc-btn-dark button" href="#">Dark</a>
+          <a class="bmc-btn bmc-btn-outline button" href="#">Outline</a>
+          <a class="bmc-btn bmc-btn-sm button" href="#">Small</a>
+          <a class="bmc-btn bmc-btn-lg button" href="#">Large</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="bmc-section bmc-section-light" id="utilities">
+      <div class="bmc-container">
+        <span class="bmc-eyebrow">Bootstrap-like Helpers</span>
+        <h2 class="bmc-heading-1 bmc-mb-4">Utility Classes</h2>
+
+        <div class="bmc-grid bmc-grid-3 bmc-mb-5">
+          <div class="bmc-card bmc-card-white">
+            <h3 class="bmc-heading-3">Text</h3>
+            <p class="bmc-text-left">Left aligned</p>
+            <p class="bmc-text-center">Centered</p>
+            <p class="bmc-text-right">Right aligned</p>
+            <p class="bmc-fw-bold bmc-uppercase">Bold uppercase</p>
+            <p class="bmc-text-muted">Muted text</p>
+          </div>
+          <div class="bmc-card bmc-card-white">
+            <h3 class="bmc-heading-3">Spacing</h3>
+            <p><code>bmc-mt-1</code> through <code>bmc-mt-5</code></p>
+            <p><code>bmc-mb-1</code> through <code>bmc-mb-5</code></p>
+            <p><code>bmc-p-1</code> through <code>bmc-p-5</code></p>
+            <p><code>bmc-gap-1</code> through <code>bmc-gap-5</code></p>
+          </div>
+          <div class="bmc-card bmc-card-white">
+            <h3 class="bmc-heading-3">Display</h3>
+            <p><code>bmc-d-flex</code></p>
+            <p><code>bmc-d-grid</code></p>
+            <p><code>bmc-justify-between</code></p>
+            <p><code>bmc-align-center</code></p>
+            <p><code>bmc-flex-wrap</code></p>
+          </div>
+        </div>
+
+        <h3 class="bmc-heading-2 bmc-mb-3">Responsive 12-Column Grid</h3>
+        <div class="bmc-row bmc-g-2 bmc-mb-5">
+          <div class="bmc-col-12 bmc-col-md-6 bmc-col-lg-3"><div class="demo-swatch bmc-card-gold">12 / 6 / 3</div></div>
+          <div class="bmc-col-12 bmc-col-md-6 bmc-col-lg-3"><div class="demo-swatch bmc-card-dark bmc-text-white">12 / 6 / 3</div></div>
+          <div class="bmc-col-12 bmc-col-md-6 bmc-col-lg-3"><div class="demo-swatch bmc-card-gold">12 / 6 / 3</div></div>
+          <div class="bmc-col-12 bmc-col-md-6 bmc-col-lg-3"><div class="demo-swatch bmc-card-dark bmc-text-white">12 / 6 / 3</div></div>
+        </div>
+
+        <h3 class="bmc-heading-2 bmc-mb-3">List Utilities</h3>
+        <ul class="bmc-list-check bmc-mb-5">
+          <li>Reusable check-list styling</li>
+          <li>Safe left padding that will not collide with bullets</li>
+          <li>Works inside cards, columns, and callouts</li>
+        </ul>
+
+        <div class="bmc-card bmc-card-dark bmc-text-center">
+          <h3 class="bmc-heading-2 bmc-text-white">Full-Width Call to Action</h3>
+          <p class="bmc-text-white">Use a block button for major page actions.</p>
+          <a class="bmc-btn bmc-btn-block button" href="#">Donate Now</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
