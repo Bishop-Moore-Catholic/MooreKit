@@ -91,6 +91,22 @@ The framework includes a Bootstrap-style 12-column responsive grid:
 </div>
 ```
 
+## Alternating Grid Utility
+
+Use `bmc-grid-alternate` to place direct children in alternating left and right columns on screens 992px and wider. The items automatically collapse into one column on smaller screens.
+
+```html
+<div class="bmc-grid-alternate bmc-gap-4">
+  <article>First item: left</article>
+  <article>Second item: right</article>
+  <article>Third item: left</article>
+</div>
+```
+
+Add `bmc-grid-alternate-align` to right-align odd items and left-align even items on large screens. Mobile text returns to left alignment.
+
+Text alignment utilities include `bmc-text-left`, `bmc-text-center`, `bmc-text-right`, `bmc-text-start`, and `bmc-text-end`, plus responsive `sm`, `md`, and `lg` variants for left, center, and right alignment.
+
 ## Component Examples
 
 The framework includes reusable components for:
@@ -113,6 +129,26 @@ The framework includes reusable components for:
 Open `index.html` to view the component gallery.
 
 Open `usage.html` for the full class and component reference.
+
+
+### Team timeline
+
+```html
+<div class="bmc-team-timeline">
+  <article class="bmc-team-timeline-item">
+    <div class="bmc-team-timeline-media bmc-team-timeline-media-circle">
+      <img src="portrait.jpg" alt="Team member name">
+    </div>
+    <div class="bmc-team-timeline-content">
+      <h3 class="bmc-team-timeline-name">Team Member</h3>
+      <p class="bmc-team-timeline-role">Position</p>
+      <p>Short biography or description.</p>
+    </div>
+  </article>
+</div>
+```
+
+Use `bmc-team-timeline-media-hex` instead of `bmc-team-timeline-media-circle` for regular, equal-sided hexagon portraits. Add `bmc-team-timeline-compact` to the timeline for smaller desktop images.
 
 ## GitHub Pages Structure
 
@@ -194,3 +230,18 @@ This allows the framework to work from a GitHub Pages project directory or subdi
 </body>
 </html>
 ```
+
+
+## Hexagon orientations
+
+MooreKit hexagons are flat-top by default. Add `bmc-hex-pointed` to text hexagons or use `bmc-team-timeline-media-hex-pointed` for point-up/point-down image hexagons.
+
+
+## Global image shapes
+
+Use `bmc-image-shape` with `bmc-image-circle`, `bmc-image-hex`, or `bmc-image-hex-pointed`. Size modifiers include `bmc-image-shape-sm`, `bmc-image-shape-lg`, and `bmc-image-shape-fluid`. The team timeline uses these same global utilities; the older timeline-specific shape classes remain as compatibility aliases.
+
+
+### Current fixes
+- Regular flat-top and pointed image hexagons retain equal side geometry inside the team timeline.
+- Standard, outline, and light buttons use gold hover text on a black hover background; the dark button retains its dedicated inverse treatment.
