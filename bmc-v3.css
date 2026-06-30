@@ -366,10 +366,12 @@
 
 /* ----------------------------------------------------------
    Buttons
-   Include class="button" in HTML to avoid site link overrides.
+   Use only MooreKit button classes; avoid generic site classes.
    ---------------------------------------------------------- */
 .bmc-v3 a.bmc-btn,
 .bmc-v3 button.bmc-btn {
+  -webkit-appearance: none;
+  appearance: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;

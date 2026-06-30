@@ -51,10 +51,10 @@ All framework selectors are scoped beneath `.bmc-v3`.
 
 ## Buttons
 
-For linked buttons on the Bishop Moore website, use both the framework class and the website's existing `.button` class:
+Use MooreKit's namespaced `.bmc-btn` class by itself. Do not add the website's generic `.button` class, because site-level button rules can override MooreKit variants:
 
 ```html
-<a class="bmc-btn button" href="#">
+<a class="bmc-btn" href="#">
   Learn More
 </a>
 ```
@@ -62,18 +62,18 @@ For linked buttons on the Bishop Moore website, use both the framework class and
 ### Button variants
 
 ```html
-<a class="bmc-btn button" href="#">Primary</a>
+<a class="bmc-btn" href="#">Primary</a>
 
-<a class="bmc-btn bmc-btn-dark button" href="#">
+<a class="bmc-btn bmc-btn-dark" href="#">
   Dark
 </a>
 
-<a class="bmc-btn bmc-btn-outline button" href="#">
+<a class="bmc-btn bmc-btn-outline" href="#">
   Outline
 </a>
 ```
 
-The dark button displays white text on black by default and changes to black text on gold when hovered or focused.
+The dark displays white text on black by default and changes to black text on gold when hovered or focused.
 
 ## Responsive Grid
 
@@ -223,7 +223,7 @@ This allows the framework to work from a GitHub Pages project directory or subdi
           Add page content here.
         </p>
 
-        <a class="bmc-btn button" href="#">
+        <a class="bmc-btn" href="#">
           Call to Action
         </a>
       </div>
@@ -246,4 +246,4 @@ Use `bmc-image-shape` with `bmc-image-circle`, `bmc-image-hex`, or `bmc-image-he
 
 ### Current fixes
 - Regular flat-top and pointed image hexagons retain equal side geometry inside the team timeline.
-- Standard, outline, and light buttons use gold hover text on a black hover background; the dark button retains its dedicated inverse treatment.
+- Standard, outline, and light buttons use gold hover text on a black hover background; the dark retains its dedicated inverse treatment.
