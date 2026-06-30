@@ -627,9 +627,9 @@
 }
 
 .bmc-v3 .bmc-pill-lg {
-  min-height: 38px;
-  padding: .55rem 1rem;
-  font-size: .82rem;
+  min-height: 46px;
+  padding: 0.7rem 1.25rem;
+  font-size: 1rem;
 }
 
 /* ----------------------------------------------------------
