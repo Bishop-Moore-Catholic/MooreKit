@@ -150,6 +150,8 @@ Open `usage.html` for the full class and component reference.
 
 Use `bmc-team-timeline-media-hex` instead of `bmc-team-timeline-media-circle` for regular, equal-sided hexagon portraits. Add `bmc-team-timeline-compact` to the timeline for smaller desktop images.
 
+Add `bmc-team-timeline-left` to place the timeline rail on the left and keep every entry to its right. For historical or milestone timelines, wrap an existing MooreKit pill in `bmc-team-timeline-year`; use `bmc-team-timeline-gallery` for image stacks. See `left-timeline.html` for a complete converted example.
+
 ## GitHub Pages Structure
 
 Upload the project folder as a unit:

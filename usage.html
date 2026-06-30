@@ -112,6 +112,7 @@
 
         <h3 class="bmc-mt-4">Team Timeline</h3>
         <p>Use <code>bmc-team-timeline</code> with alternating <code>bmc-team-timeline-item</code> entries. Each entry contains a media wrapper and content wrapper. Portraits can use <code>bmc-image-circle</code>, the flat-top <code>bmc-image-hex</code>, or the point-up/point-down <code>bmc-image-hex-pointed</code>. Add <code>bmc-team-timeline-compact</code> to the parent for smaller desktop portraits.</p>
+        <p>Add <code>bmc-team-timeline-left</code> to move the rail to the left and place all entries to its right. Wrap an existing MooreKit pill in <code>bmc-team-timeline-year</code> for a year or milestone label, and use <code>bmc-team-timeline-gallery</code> when one entry contains multiple images. The left variation collapses to a content-first single column on mobile.</p>
         <code class="docs-code">&lt;div class="bmc-team-timeline"&gt;
   &lt;article class="bmc-team-timeline-item"&gt;
     &lt;div class="bmc-team-timeline-media bmc-image-shape bmc-image-circle"&gt;
@@ -121,6 +122,17 @@
       &lt;h3 class="bmc-team-timeline-name"&gt;Name&lt;/h3&gt;
       &lt;p class="bmc-team-timeline-role"&gt;Role&lt;/p&gt;
       &lt;p&gt;Biography or description.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code>
+        <code class="docs-code">&lt;div class="bmc-team-timeline bmc-team-timeline-left"&gt;
+  &lt;article class="bmc-team-timeline-item"&gt;
+    &lt;div class="bmc-team-timeline-media"&gt;&lt;img src="..." alt="..."&gt;&lt;/div&gt;
+    &lt;div class="bmc-team-timeline-content"&gt;
+      &lt;p class="bmc-team-timeline-year"&gt;
+  &lt;span class="bmc-pill bmc-pill-gold bmc-pill-lg"&gt;1954&lt;/span&gt;
+&lt;/p&gt;
+      &lt;p&gt;Milestone description.&lt;/p&gt;
     &lt;/div&gt;
   &lt;/article&gt;
 &lt;/div&gt;</code>

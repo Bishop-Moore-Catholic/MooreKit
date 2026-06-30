@@ -1129,6 +1129,8 @@
   --bmc-v3-timeline-overlap: -2rem;
 }
 
+
+
 @media (max-width: 1024px) {
   .bmc-v3 .bmc-team-timeline,
   .bmc-v3 .bmc-team-timeline-compact {
@@ -1168,5 +1170,117 @@
 
   .bmc-v3 .bmc-team-timeline-item {
     gap: .85rem;
+  }
+}
+
+/* ----------------------------------------------------------
+   Left Timeline Variant
+   Places the timeline rail on the left with every entry on the right.
+   Add bmc-team-timeline-left to the existing timeline component.
+   ---------------------------------------------------------- */
+.bmc-v3 .bmc-team-timeline.bmc-team-timeline-left {
+  --bmc-v3-timeline-left-rail: .5rem;
+  --bmc-v3-timeline-left-indent: 3.25rem;
+  --bmc-v3-timeline-left-media: minmax(180px, 32%);
+  max-width: 1100px;
+  padding-block: 0;
+}
+
+.bmc-v3 .bmc-team-timeline.bmc-team-timeline-left::before {
+  inset-block: 0;
+  left: var(--bmc-v3-timeline-left-rail);
+  transform: none;
+}
+
+.bmc-v3 .bmc-team-timeline-left .bmc-team-timeline-item,
+.bmc-v3 .bmc-team-timeline-left .bmc-team-timeline-item:nth-child(odd),
+.bmc-v3 .bmc-team-timeline-left .bmc-team-timeline-item:nth-child(even) {
+  left: 0;
+  display: grid;
+  grid-template-columns: var(--bmc-v3-timeline-left-media) minmax(0, 1fr);
+  align-items: center;
+  gap: clamp(1.5rem, 4vw, 3rem);
+  width: 100%;
+  margin-top: 0;
+  padding: clamp(2rem, 5vw, 3.5rem) 0 clamp(2rem, 5vw, 3.5rem) var(--bmc-v3-timeline-left-indent);
+  text-align: left;
+}
+
+.bmc-v3 .bmc-team-timeline-left .bmc-team-timeline-item + .bmc-team-timeline-item {
+  margin-top: 0;
+}
+
+.bmc-v3 .bmc-team-timeline-left .bmc-team-timeline-item::before,
+.bmc-v3 .bmc-team-timeline-left .bmc-team-timeline-item:nth-child(odd)::before,
+.bmc-v3 .bmc-team-timeline-left .bmc-team-timeline-item:nth-child(even)::before {
+  top: 50%;
+  left: calc(var(--bmc-v3-timeline-left-rail) - 5.5px);
+  right: auto;
+  transform: translateY(-50%);
+}
+
+.bmc-v3 .bmc-team-timeline-left .bmc-team-timeline-media {
+  width: 100%;
+  max-width: 100%;
+  flex: none;
+  aspect-ratio: auto;
+  overflow: visible;
+  background: transparent;
+}
+
+.bmc-v3 .bmc-team-timeline-left .bmc-team-timeline-media > img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  box-shadow: 5px 10px 10px rgb(0 0 0 / 35%);
+}
+
+.bmc-v3 .bmc-team-timeline-left .bmc-team-timeline-content {
+  width: auto;
+  max-width: 46rem;
+}
+
+.bmc-v3 .bmc-team-timeline-year {
+  margin: 0 0 .75rem;
+}
+
+.bmc-v3 .bmc-team-timeline-year .bmc-pill {
+  font-family: inherit;
+}
+
+.bmc-v3 .bmc-team-timeline-gallery {
+  display: grid;
+  gap: 1rem;
+}
+
+.bmc-v3 .bmc-team-timeline-gallery > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  box-shadow: 5px 10px 10px rgb(0 0 0 / 35%);
+}
+
+@media (max-width: 767.98px) {
+  .bmc-v3 .bmc-team-timeline.bmc-team-timeline-left::before,
+  .bmc-v3 .bmc-team-timeline-left .bmc-team-timeline-item::before {
+    display: none;
+  }
+
+  .bmc-v3 .bmc-team-timeline-left .bmc-team-timeline-item,
+  .bmc-v3 .bmc-team-timeline-left .bmc-team-timeline-item:nth-child(odd),
+  .bmc-v3 .bmc-team-timeline-left .bmc-team-timeline-item:nth-child(even) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.25rem;
+    padding: 2rem 0;
+  }
+
+  .bmc-v3 .bmc-team-timeline-left .bmc-team-timeline-content {
+    order: 1;
+  }
+
+  .bmc-v3 .bmc-team-timeline-left .bmc-team-timeline-media {
+    order: 2;
   }
 }
