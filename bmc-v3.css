@@ -1286,3 +1286,200 @@
     order: 2;
   }
 }
+
+/* ----------------------------------------------------------
+   Image-Card Carousel
+   ---------------------------------------------------------- */
+.bmc-v3 .bmc-carousel {
+  --bmc-carousel-gap: 1rem;
+  --bmc-carousel-visible: 3;
+  position: relative;
+}
+
+.bmc-v3 .bmc-carousel-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.bmc-v3 .bmc-carousel-actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: .5rem;
+}
+
+.bmc-v3 .bmc-carousel-button {
+  display: inline-grid;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  place-items: center;
+  border: 2px solid var(--bmc-v3-black);
+  border-radius: 0;
+  background: transparent;
+  color: var(--bmc-v3-black);
+  cursor: pointer;
+  font: inherit;
+  line-height: 1;
+}
+
+.bmc-v3 .bmc-carousel-button:hover,
+.bmc-v3 .bmc-carousel-button:focus-visible {
+  border-color: var(--bmc-v3-gold);
+  background: var(--bmc-v3-gold);
+  color: var(--bmc-v3-black);
+}
+
+.bmc-v3 .bmc-carousel-button:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
+
+.bmc-v3 .bmc-carousel-button:disabled {
+  opacity: .35;
+  cursor: not-allowed;
+}
+
+.bmc-v3 .bmc-carousel-viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.bmc-v3 .bmc-carousel-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.bmc-v3 .bmc-carousel-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns:
+    calc(
+      (100% - (var(--bmc-carousel-gap) * (var(--bmc-carousel-visible) - 1)))
+      / var(--bmc-carousel-visible)
+    );
+  gap: var(--bmc-carousel-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.bmc-v3 .bmc-carousel-slide {
+  min-width: 0;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.bmc-v3 .bmc-carousel-slide > * {
+  height: 100%;
+}
+
+.bmc-v3 .bmc-image-card-media {
+  position: relative;
+  width: 100%;
+  aspect-ratio: var(--bmc-carousel-media-ratio, 4 / 3);
+  overflow: hidden;
+  background: var(--bmc-v3-gray-100);
+}
+
+.bmc-v3 .bmc-image-card-media > img,
+.bmc-v3 .bmc-image-card-media > video,
+.bmc-v3 .bmc-image-card-media > iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.bmc-v3 .bmc-image-card-media > img,
+.bmc-v3 .bmc-image-card-media > video {
+  object-fit: contain;
+}
+
+.bmc-v3 .bmc-image-card-media-cover > img,
+.bmc-v3 .bmc-image-card-media-cover > video {
+  object-fit: cover;
+}
+
+.bmc-v3 .bmc-image-card-media-square {
+  --bmc-carousel-media-ratio: 1 / 1;
+}
+
+.bmc-v3 .bmc-image-card-media-portrait {
+  --bmc-carousel-media-ratio: 4 / 5;
+}
+
+.bmc-v3 .bmc-image-card-media-landscape {
+  --bmc-carousel-media-ratio: 16 / 9;
+}
+
+.bmc-v3 .bmc-carousel .bmc-image-card {
+  border: 1px solid var(--bmc-v3-gray-300);
+}
+
+.bmc-v3 .bmc-carousel .bmc-image-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+  padding: 1.25rem !important;
+}
+
+.bmc-v3 .bmc-carousel .bmc-image-card-body > :last-child {
+  margin-bottom: 0;
+}
+
+.bmc-v3 .bmc-carousel-title {
+  margin: 0;
+  font-size: clamp(1rem, 1.6vw, 1.25rem) !important;
+  line-height: 1.18 !important;
+  font-weight: 800 !important;
+}
+
+.bmc-v3 .bmc-carousel-meta {
+  margin: 0;
+  color: var(--bmc-v3-gold-dark);
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.bmc-v3 .bmc-carousel-status {
+  margin-top: .85rem;
+  color: var(--bmc-v3-gray-700);
+  font-size: .82rem;
+  text-align: right;
+}
+
+@media (max-width: 900px) {
+  .bmc-v3 .bmc-carousel {
+    --bmc-carousel-visible: 2;
+  }
+}
+
+@media (max-width: 600px) {
+  .bmc-v3 .bmc-carousel {
+    --bmc-carousel-visible: 1;
+  }
+
+  .bmc-v3 .bmc-carousel-header {
+    align-items: center;
+  }
+
+  .bmc-v3 .bmc-carousel-button {
+    width: 42px;
+    height: 42px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bmc-v3 .bmc-carousel-viewport {
+    scroll-behavior: auto;
+  }
+}

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BMC V3 Component Boilerplate</title>
   <link rel="stylesheet" href="bmc-v3.css">
+  <script src="bmc-v3.js" defer></script>
   <style>
     body { margin: 0; background: #fff; }
     .demo-label { margin-bottom: .75rem; font-size: .72rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; color: #777; }
@@ -205,6 +206,70 @@
               <img class="bmc-image-current" src="assets/images/legacy-science-current.jpg" alt="Students in a modern science laboratory" loading="lazy">
               <figcaption>Learning Today</figcaption>
             </figure>
+          </div>
+        </div>
+
+        <div class="bmc-mb-5">
+          <div class="bmc-carousel" data-bmc-carousel data-bmc-carousel-loop="true">
+            <div class="bmc-carousel-header">
+              <div>
+                <span class="bmc-eyebrow">The latest from Imagine Moore</span>
+                <h3 class="bmc-heading-2 bmc-mb-0">Project <strong>Updates</strong></h3>
+              </div>
+              <div class="bmc-carousel-actions" aria-label="Project update carousel controls">
+                <button class="bmc-carousel-button" type="button" data-bmc-carousel-prev aria-label="Previous project updates">
+                  <span aria-hidden="true">&#8592;</span>
+                </button>
+                <button class="bmc-carousel-button" type="button" data-bmc-carousel-next aria-label="Next project updates">
+                  <span aria-hidden="true">&#8594;</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="bmc-carousel-viewport" data-bmc-carousel-viewport tabindex="0" aria-label="Project updates">
+              <ul class="bmc-carousel-track" data-bmc-carousel-track>
+                <li class="bmc-carousel-slide" data-bmc-carousel-slide>
+                  <article class="bmc-image-card">
+                    <div class="bmc-image-card-media bmc-image-card-media-landscape">
+                      <img src="https://www.bishopmoore.org/editoruploads/images/Give/CFTA/Updates/predemo.jpg" alt="Existing structures on property to be demolished for the Center for the Arts." loading="lazy">
+                    </div>
+                    <div class="bmc-image-card-body">
+                      <p class="bmc-carousel-meta">July 2026</p>
+                      <h4 class="bmc-carousel-title">Site Demolition To Begin</h4>
+                      <p>Work will begin on demolishing the existing structures to make way for new construction.</p>
+                    </div>
+                  </article>
+                </li>
+
+                <li class="bmc-carousel-slide" data-bmc-carousel-slide>
+                  <article class="bmc-image-card">
+                    <div class="bmc-image-card-media bmc-image-card-media-landscape">
+                      <img src="https://www.bishopmoore.org/editoruploads/images/Give/CFTA/Updates/groundbreaking.jpg" alt="Groundbreaking ceremony for the Center for the Arts at Bishop Moore Catholic High School." loading="lazy">
+                    </div>
+                    <div class="bmc-image-card-body">
+                      <p class="bmc-carousel-meta">May 22, 2026</p>
+                      <h4 class="bmc-carousel-title">Groundbreaking Ceremony</h4>
+                      <p>Bishop Noonan blessed and dedicated the site for the new Center for the Arts.</p>
+                    </div>
+                  </article>
+                </li>
+
+                <li class="bmc-carousel-slide" data-bmc-carousel-slide>
+                  <article class="bmc-image-card">
+                    <div class="bmc-image-card-media bmc-image-card-media-landscape">
+                      <iframe src="https://www.youtube.com/embed/hlRIh2b76DQ?enablejsapi=1" title="Imagine Moore: The Center for the Arts" loading="lazy" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen data-bmc-video></iframe>
+                    </div>
+                    <div class="bmc-image-card-body">
+                      <p class="bmc-carousel-meta">April 2026</p>
+                      <h4 class="bmc-carousel-title">Imagine Moore Launches</h4>
+                      <p>See the vision for a dedicated home where Bishop Moore Catholic students can create, perform, and grow.</p>
+                    </div>
+                  </article>
+                </li>
+              </ul>
+            </div>
+
+            <p class="bmc-carousel-status" data-bmc-carousel-status aria-live="polite"></p>
           </div>
         </div>
 

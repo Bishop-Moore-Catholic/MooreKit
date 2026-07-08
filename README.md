@@ -9,6 +9,8 @@ The framework is scoped beneath the `.bmc-v3` namespace so it can be added to ex
 | File | Purpose |
 |---|---|
 | `bmc-v3.css` | Scoped component and utility framework |
+| `bmc-v3.min.css` | Minified framework stylesheet |
+| `bmc-v3.js` | Optional carousel initializer for `[data-bmc-carousel]` components |
 | `index.html` | Visual boilerplate and component gallery |
 | `usage.html` | Bootstrap-style usage guide and class reference |
 | `assets/images/` | Local demonstration images used by the boilerplate |
@@ -25,6 +27,12 @@ When the stylesheet is stored in another directory, update the path as needed:
 
 ```html
 <link rel="stylesheet" href="/editoruploads/css/bmc-v3.css">
+```
+
+Load the JavaScript file once on pages that use carousels:
+
+```html
+<script src="bmc-v3.js" defer></script>
 ```
 
 ### 2. Add the framework namespace
@@ -119,6 +127,7 @@ The framework includes reusable components for:
 - Statistics
 - Responsive videos
 - Image and legacy cards
+- Image-card carousels
 - Tables
 - Heroes
 - Section headings
@@ -129,6 +138,57 @@ The framework includes reusable components for:
 Open `index.html` to view the component gallery.
 
 Open `usage.html` for the full class and component reference.
+
+### Image-card carousel
+
+Load `bmc-v3.js` once, then add `data-bmc-carousel` to the carousel root. The component shows three cards on desktop, two on tablet, and one on mobile. It supports scrolling, previous/next controls, keyboard navigation, status text, reduced-motion preferences, and optional looped navigation.
+
+```html
+<div class="bmc-carousel" data-bmc-carousel data-bmc-carousel-loop="true">
+  <div class="bmc-carousel-header">
+    <div>
+      <span class="bmc-eyebrow">The latest from Imagine Moore</span>
+      <h2 class="bmc-heading-2">Project <strong>Updates</strong></h2>
+    </div>
+
+    <div class="bmc-carousel-actions" aria-label="Carousel controls">
+      <button class="bmc-carousel-button" type="button" data-bmc-carousel-prev aria-label="Previous">
+        <span aria-hidden="true">&#8592;</span>
+      </button>
+      <button class="bmc-carousel-button" type="button" data-bmc-carousel-next aria-label="Next">
+        <span aria-hidden="true">&#8594;</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="bmc-carousel-viewport" data-bmc-carousel-viewport tabindex="0" aria-label="Project updates">
+    <ul class="bmc-carousel-track" data-bmc-carousel-track>
+      <li class="bmc-carousel-slide" data-bmc-carousel-slide>
+        <article class="bmc-image-card">
+          <div class="bmc-image-card-media bmc-image-card-media-landscape">
+            <img src="image.jpg" alt="Description">
+          </div>
+          <div class="bmc-image-card-body">
+            <p class="bmc-carousel-meta">July 2026</p>
+            <h3 class="bmc-carousel-title">Update Title</h3>
+            <p>Short update copy.</p>
+          </div>
+        </article>
+      </li>
+    </ul>
+  </div>
+
+  <p class="bmc-carousel-status" data-bmc-carousel-status aria-live="polite"></p>
+</div>
+```
+
+Looping is disabled by default; add `data-bmc-carousel-loop="true"` for wraparound navigation. Media stages support `bmc-image-card-media-landscape`, `bmc-image-card-media-portrait`, and `bmc-image-card-media-square`. Images and videos preserve their full frame by default; add `bmc-image-card-media-cover` when intentional cropping is preferred. For YouTube embeds that should pause when they leave view, add `?enablejsapi=1` to the embed URL and include `data-bmc-video` on the `iframe`.
+
+For dynamically inserted carousel markup, run:
+
+```js
+window.MooreKit.initCarousels(containerElement);
+```
 
 
 ### Team timeline
@@ -161,6 +221,8 @@ bmc-v3-framework/
 ├── index.html
 ├── usage.html
 ├── bmc-v3.css
+├── bmc-v3.min.css
+├── bmc-v3.js
 ├── README.md
 └── assets/
     └── images/
@@ -188,6 +250,7 @@ This allows the framework to work from a GitHub Pages project directory or subdi
 - Colors and spacing are controlled through framework variables.
 - Components are responsive by default.
 - Framework styles remain scoped beneath `.bmc-v3`.
+- Carousel behavior is opt-in through `bmc-v3.js`.
 - Reduced-motion preferences are respected.
 - Utility classes follow a Bootstrap-inspired naming pattern.
 
@@ -196,6 +259,8 @@ This allows the framework to work from a GitHub Pages project directory or subdi
 - [`index.html`](index.html) — component gallery and boilerplate
 - [`usage.html`](usage.html) — usage guide and complete class reference
 - [`bmc-v3.css`](bmc-v3.css) — framework stylesheet
+- [`bmc-v3.min.css`](bmc-v3.min.css) — minified stylesheet
+- [`bmc-v3.js`](bmc-v3.js) — carousel initializer
 
 ## Basic Page Template
 
@@ -208,6 +273,7 @@ This allows the framework to work from a GitHub Pages project directory or subdi
   <title>BMC V3 Page</title>
 
   <link rel="stylesheet" href="bmc-v3.css">
+  <script src="bmc-v3.js" defer></script>
 </head>
 <body>
   <main class="bmc-v3">
