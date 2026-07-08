@@ -14,13 +14,16 @@
     .docs-class-list { columns:3 260px; column-gap:2rem; }
     .docs-class-list code { display:inline-block; margin-bottom:.45rem; color:#242122 !important; background:transparent !important; }
     .docs-section { scroll-margin-top:80px; }
+    .docs-toc-list { display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:.75rem; margin:1.5rem 0 0; padding:0; list-style:none; }
+    .docs-toc-list a { display:block; padding:.9rem 1rem; border:1px solid #d5d2d2; background:#fff; color:#242122; font-weight:800; text-decoration:none; }
+    .docs-toc-list a:hover, .docs-toc-list a:focus-visible { border-color:#ddb75f; background:#ddb75f; color:#242122; }
   </style>
 </head>
 <body>
 <div class="bmc-v3">
   <nav class="docs-nav">
     <div class="bmc-container bmc-d-flex bmc-flex-wrap bmc-gap-2">
-      <a href="#start">Start</a><a href="#layout">Layout</a><a href="#type">Typography</a><a href="#components">Components</a><a href="#utilities">Utilities</a><a href="#index">Class Index</a>
+      <a href="#start">Start</a><a href="#quick-start">Quick Start</a><a href="#layout">Layout</a><a href="#type">Typography</a><a href="#components">Components</a><a href="#utilities">Utilities</a><a href="#index">Class Index</a>
     </div>
   </nav>
   <header class="bmc-section bmc-section-dark" id="start">
@@ -32,6 +35,23 @@
   </header>
 
   <main>
+    <section class="bmc-section bmc-section-light docs-section" id="contents" aria-labelledby="contents-title">
+      <div class="bmc-container">
+        <span class="bmc-eyebrow">Quick Links</span>
+        <h2 class="bmc-heading-1" id="contents-title">Table of Contents</h2>
+        <ul class="docs-toc-list">
+          <li><a href="#quick-start">Quick Start</a></li>
+          <li><a href="#layout">Layout</a></li>
+          <li><a href="#type">Typography</a></li>
+          <li><a href="#components">Components</a></li>
+          <li><a href="#utilities">Utilities</a></li>
+          <li><a href="#index">Class Index</a></li>
+          <li><a href="#image-shapes">Global Image Shapes</a></li>
+          <li><a href="#hexagon-geometry">Hexagon Geometry</a></li>
+        </ul>
+      </div>
+    </section>
+
     <section class="bmc-section docs-section" id="quick-start">
       <div class="bmc-container">
         <h2 class="bmc-heading-1">Quick Start</h2>
@@ -194,6 +214,28 @@
       </div>
     </section>
 
+    <section class="bmc-section docs-section" id="image-shapes">
+      <div class="bmc-container">
+        <h2 class="bmc-heading-2">Global Image Shapes</h2>
+        <p>Use <code>bmc-image-shape</code> with one shape class. These utilities are not tied to the team timeline.</p>
+        <code class="docs-code">&lt;div class="bmc-image-shape bmc-image-hex"&gt;
+  &lt;img src="photo.jpg" alt="Description"&gt;
+&lt;/div&gt;
+
+&lt;div class="bmc-image-shape bmc-image-hex-pointed bmc-image-shape-lg"&gt;
+  &lt;img src="photo.jpg" alt="Description"&gt;
+&lt;/div&gt;</code>
+        <p>Available shapes: <code>bmc-image-circle</code>, <code>bmc-image-hex</code>, and <code>bmc-image-hex-pointed</code>. Available sizes: <code>bmc-image-shape-sm</code>, the default size, <code>bmc-image-shape-lg</code>, and <code>bmc-image-shape-fluid</code>.</p>
+      </div>
+    </section>
+
+      <section class="bmc-section docs-section" id="hexagon-geometry">
+        <div class="bmc-container">
+          <h2>Hexagon geometry note</h2>
+          <p>Global hexagon image classes preserve a regular six-sided shape inside cards, grids, and the team timeline. Use <code>bmc-image-hex</code> for flat-top and <code>bmc-image-hex-pointed</code> for point-up orientation.</p>
+        </div>
+      </section>
+
     <section class="bmc-section bmc-section-dark docs-section" id="index">
       <div class="bmc-container">
         <h2 class="bmc-heading-1 bmc-text-white">Complete Class Index</h2>
@@ -201,24 +243,8 @@
         <div class="docs-class-list bmc-card bmc-card-white"><code>.bmc-align-center</code><br><code>.bmc-align-end</code><br><code>.bmc-align-start</code><br><code>.bmc-align-stretch</code><br><code>.bmc-btn</code><br><code>.bmc-btn-block</code><br><code>.bmc-btn-dark</code><br><code>.bmc-btn-lg</code><br><code>.bmc-btn-light</code><br><code>.bmc-btn-outline</code><br><code>.bmc-btn-sm</code><br><code>.bmc-callout</code><br><code>.bmc-capitalize</code><br><code>.bmc-card</code><br><code>.bmc-card-dark</code><br><code>.bmc-card-gold</code><br><code>.bmc-card-white</code><br><code>.bmc-carousel</code><br><code>.bmc-carousel-actions</code><br><code>.bmc-carousel-button</code><br><code>.bmc-carousel-header</code><br><code>.bmc-carousel-meta</code><br><code>.bmc-carousel-slide</code><br><code>.bmc-carousel-status</code><br><code>.bmc-carousel-title</code><br><code>.bmc-carousel-track</code><br><code>.bmc-carousel-viewport</code><br><code>.bmc-col</code><br><code>.bmc-col-1</code><br><code>.bmc-col-10</code><br><code>.bmc-col-11</code><br><code>.bmc-col-12</code><br><code>.bmc-col-2</code><br><code>.bmc-col-3</code><br><code>.bmc-col-4</code><br><code>.bmc-col-5</code><br><code>.bmc-col-6</code><br><code>.bmc-col-7</code><br><code>.bmc-col-8</code><br><code>.bmc-col-9</code><br><code>.bmc-col-auto</code><br><code>.bmc-col-lg-1</code><br><code>.bmc-col-lg-10</code><br><code>.bmc-col-lg-11</code><br><code>.bmc-col-lg-12</code><br><code>.bmc-col-lg-2</code><br><code>.bmc-col-lg-3</code><br><code>.bmc-col-lg-4</code><br><code>.bmc-col-lg-5</code><br><code>.bmc-col-lg-6</code><br><code>.bmc-col-lg-7</code><br><code>.bmc-col-lg-8</code><br><code>.bmc-col-lg-9</code><br><code>.bmc-col-md-1</code><br><code>.bmc-col-md-10</code><br><code>.bmc-col-md-11</code><br><code>.bmc-col-md-12</code><br><code>.bmc-col-md-2</code><br><code>.bmc-col-md-3</code><br><code>.bmc-col-md-4</code><br><code>.bmc-col-md-5</code><br><code>.bmc-col-md-6</code><br><code>.bmc-col-md-7</code><br><code>.bmc-col-md-8</code><br><code>.bmc-col-md-9</code><br><code>.bmc-col-sm-1</code><br><code>.bmc-col-sm-10</code><br><code>.bmc-col-sm-11</code><br><code>.bmc-col-sm-12</code><br><code>.bmc-col-sm-2</code><br><code>.bmc-col-sm-3</code><br><code>.bmc-col-sm-4</code><br><code>.bmc-col-sm-5</code><br><code>.bmc-col-sm-6</code><br><code>.bmc-col-sm-7</code><br><code>.bmc-col-sm-8</code><br><code>.bmc-col-sm-9</code><br><code>.bmc-container</code><br><code>.bmc-container-fluid</code><br><code>.bmc-container-narrow</code><br><code>.bmc-d-block</code><br><code>.bmc-d-flex</code><br><code>.bmc-d-grid</code><br><code>.bmc-d-inline</code><br><code>.bmc-d-inline-block</code><br><code>.bmc-d-inline-flex</code><br><code>.bmc-d-lg-block</code><br><code>.bmc-d-lg-flex</code><br><code>.bmc-d-lg-none</code><br><code>.bmc-d-md-block</code><br><code>.bmc-d-md-flex</code><br><code>.bmc-d-md-none</code><br><code>.bmc-d-none</code><br><code>.bmc-d-sm-block</code><br><code>.bmc-d-sm-flex</code><br><code>.bmc-d-sm-none</code><br><code>.bmc-display-1</code><br><code>.bmc-display-2</code><br><code>.bmc-divider</code><br><code>.bmc-eyebrow</code><br><code>.bmc-flex-column</code><br><code>.bmc-flex-nowrap</code><br><code>.bmc-flex-row</code><br><code>.bmc-flex-wrap</code><br><code>.bmc-font-serif</code><br><code>.bmc-fw-bold</code><br><code>.bmc-fw-medium</code><br><code>.bmc-fw-normal</code><br><code>.bmc-fw-semibold</code><br><code>.bmc-g-0</code><br><code>.bmc-g-1</code><br><code>.bmc-g-2</code><br><code>.bmc-g-3</code><br><code>.bmc-g-4</code><br><code>.bmc-g-5</code><br><code>.bmc-gap-0</code><br><code>.bmc-gap-1</code><br><code>.bmc-gap-2</code><br><code>.bmc-gap-3</code><br><code>.bmc-gap-4</code><br><code>.bmc-gap-5</code><br><code>.bmc-grid</code><br><code>.bmc-grid-2</code><br><code>.bmc-grid-3</code><br><code>.bmc-grid-4</code><br><code>.bmc-grid-alternate</code><br><code>.bmc-grid-alternate-align</code><br><code>.bmc-grid-auto</code><br><code>.bmc-h-100</code><br><code>.bmc-heading-1</code><br><code>.bmc-heading-2</code><br><code>.bmc-heading-3</code><br><code>.bmc-heading-bold</code><br><code>.bmc-heading-emphasis</code><br><code>.bmc-heading-light</code><br><code>.bmc-heading-medium</code><br><code>.bmc-heading-regular</code><br><code>.bmc-heading-semibold</code><br><code>.bmc-heading-split</code><br><code>.bmc-hero</code><br><code>.bmc-hero-content</code><br><code>.bmc-hero-media</code><br><code>.bmc-hero-overlay</code><br><code>.bmc-hex</code><br><code>.bmc-hex-content</code><br><code>.bmc-hex-dark</code><br><code>.bmc-hex-label</code><br><code>.bmc-hex-lg</code><br><code>.bmc-hex-light</code><br><code>.bmc-hex-outline</code><br><code>.bmc-hex-pointed</code><br><code>.bmc-hex-sm</code><br><code>.bmc-hex-value</code><br><code>.bmc-image-card</code><br><code>.bmc-image-card-body</code><br><code>.bmc-image-card-caption</code><br><code>.bmc-image-card-landscape</code><br><code>.bmc-image-card-media</code><br><code>.bmc-image-card-media-cover</code><br><code>.bmc-image-card-media-landscape</code><br><code>.bmc-image-card-media-portrait</code><br><code>.bmc-image-card-media-square</code><br><code>.bmc-image-card-square</code><br><code>.bmc-image-circle</code><br><code>.bmc-image-current</code><br><code>.bmc-image-hex</code><br><code>.bmc-image-hex-pointed</code><br><code>.bmc-image-shape</code><br><code>.bmc-image-shape-fluid</code><br><code>.bmc-image-shape-lg</code><br><code>.bmc-image-shape-sm</code><br><code>.bmc-italic</code><br><code>.bmc-justify-around</code><br><code>.bmc-justify-between</code><br><code>.bmc-justify-center</code><br><code>.bmc-justify-end</code><br><code>.bmc-justify-start</code><br><code>.bmc-lead</code><br><code>.bmc-legacy-card</code><br><code>.bmc-legacy-card-landscape</code><br><code>.bmc-legacy-card-square</code><br><code>.bmc-list-check</code><br><code>.bmc-list-inline</code><br><code>.bmc-list-unstyled</code><br><code>.bmc-lowercase</code><br><code>.bmc-m-0</code><br><code>.bmc-m-1</code><br><code>.bmc-m-2</code><br><code>.bmc-m-3</code><br><code>.bmc-m-4</code><br><code>.bmc-m-5</code><br><code>.bmc-mb-0</code><br><code>.bmc-mb-1</code><br><code>.bmc-mb-2</code><br><code>.bmc-mb-3</code><br><code>.bmc-mb-4</code><br><code>.bmc-mb-5</code><br><code>.bmc-media-cover</code><br><code>.bmc-mt-0</code><br><code>.bmc-mt-1</code><br><code>.bmc-mt-2</code><br><code>.bmc-mt-3</code><br><code>.bmc-mt-4</code><br><code>.bmc-mt-5</code><br><code>.bmc-mx-auto</code><br><code>.bmc-my-0</code><br><code>.bmc-my-1</code><br><code>.bmc-my-2</code><br><code>.bmc-my-3</code><br><code>.bmc-my-4</code><br><code>.bmc-my-5</code><br><code>.bmc-overflow-auto</code><br><code>.bmc-overflow-hidden</code><br><code>.bmc-p-0</code><br><code>.bmc-p-1</code><br><code>.bmc-p-2</code><br><code>.bmc-p-3</code><br><code>.bmc-p-4</code><br><code>.bmc-p-5</code><br><code>.bmc-pill</code><br><code>.bmc-pill-dark</code><br><code>.bmc-pill-gold</code><br><code>.bmc-pill-lg</code><br><code>.bmc-pill-outline</code><br><code>.bmc-pill-sm</code><br><code>.bmc-position-absolute</code><br><code>.bmc-position-fixed</code><br><code>.bmc-position-relative</code><br><code>.bmc-px-1</code><br><code>.bmc-px-2</code><br><code>.bmc-px-3</code><br><code>.bmc-px-4</code><br><code>.bmc-py-1</code><br><code>.bmc-py-2</code><br><code>.bmc-py-3</code><br><code>.bmc-py-4</code><br><code>.bmc-quote</code><br><code>.bmc-ratio</code><br><code>.bmc-ratio-16x9</code><br><code>.bmc-ratio-1x1</code><br><code>.bmc-ratio-3x4</code><br><code>.bmc-ratio-4x3</code><br><code>.bmc-row</code><br><code>.bmc-section</code><br><code>.bmc-section-dark</code><br><code>.bmc-section-gold</code><br><code>.bmc-section-light</code><br><code>.bmc-section-sm</code><br><code>.bmc-small</code><br><code>.bmc-stat</code><br><code>.bmc-stat-label</code><br><code>.bmc-stat-value</code><br><code>.bmc-table</code><br><code>.bmc-table-borderless</code><br><code>.bmc-table-striped</code><br><code>.bmc-table-wrap</code><br><code>.bmc-team-timeline</code><br><code>.bmc-team-timeline-compact</code><br><code>.bmc-team-timeline-content</code><br><code>.bmc-team-timeline-gallery</code><br><code>.bmc-team-timeline-item</code><br><code>.bmc-team-timeline-left</code><br><code>.bmc-team-timeline-media</code><br><code>.bmc-team-timeline-media-circle</code><br><code>.bmc-team-timeline-media-hex</code><br><code>.bmc-team-timeline-media-hex-pointed</code><br><code>.bmc-team-timeline-name</code><br><code>.bmc-team-timeline-role</code><br><code>.bmc-team-timeline-year</code><br><code>.bmc-text-balance</code><br><code>.bmc-text-black</code><br><code>.bmc-text-center</code><br><code>.bmc-text-end</code><br><code>.bmc-text-gold</code><br><code>.bmc-text-left</code><br><code>.bmc-text-lg-center</code><br><code>.bmc-text-lg-left</code><br><code>.bmc-text-lg-right</code><br><code>.bmc-text-md-center</code><br><code>.bmc-text-md-left</code><br><code>.bmc-text-md-right</code><br><code>.bmc-text-muted</code><br><code>.bmc-text-nowrap</code><br><code>.bmc-text-pretty</code><br><code>.bmc-text-right</code><br><code>.bmc-text-sm-center</code><br><code>.bmc-text-sm-left</code><br><code>.bmc-text-sm-right</code><br><code>.bmc-text-start</code><br><code>.bmc-text-white</code><br><code>.bmc-text-wrap</code><br><code>.bmc-uppercase</code><br><code>.bmc-visually-hidden</code><br><code>.bmc-w-100</code><br><code>.bmc-w-25</code><br><code>.bmc-w-50</code><br><code>.bmc-w-75</code><br><code>.bmc-xsmall</code></div>
       </div>
     </section>
-  
-      <section class="bmc-section">
-        <div class="bmc-container">
-          <h2 class="bmc-heading-2">Global Image Shapes</h2>
-          <p>Use <code>bmc-image-shape</code> with one shape class. These utilities are not tied to the team timeline.</p>
-<pre><code>&lt;div class="bmc-image-shape bmc-image-hex"&gt;
-  &lt;img src="photo.jpg" alt="Description"&gt;
-&lt;/div&gt;
-
-&lt;div class="bmc-image-shape bmc-image-hex-pointed bmc-image-shape-lg"&gt;
-  &lt;img src="photo.jpg" alt="Description"&gt;
-&lt;/div&gt;</code></pre>
-          <p>Available shapes: <code>bmc-image-circle</code>, <code>bmc-image-hex</code>, and <code>bmc-image-hex-pointed</code>. Available sizes: <code>bmc-image-shape-sm</code>, the default size, <code>bmc-image-shape-lg</code>, and <code>bmc-image-shape-fluid</code>.</p>
-        </div>
-      </section>
 
   </main>
 </div>
-<section class="bmc-section"><div class="bmc-container"><h2>Hexagon geometry note</h2><p>Global hexagon image classes preserve a regular six-sided shape inside cards, grids, and the team timeline. Use <code>bmc-image-hex</code> for flat-top and <code>bmc-image-hex-pointed</code> for point-up orientation.</p></div></section>
 </body>
 </html>
