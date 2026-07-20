@@ -11,8 +11,11 @@ The framework is scoped beneath the `.bmc-v3` namespace so it can be added to ex
 | `bmc-v3.css` | Scoped component and utility framework |
 | `bmc-v3.min.css` | Minified framework stylesheet |
 | `bmc-v3.js` | Optional carousel initializer for `[data-bmc-carousel]` components |
-| `index.html` | Visual boilerplate and component gallery |
-| `usage.html` | Bootstrap-style usage guide and class reference |
+| `index.html` | Root GitHub Pages component gallery |
+| `docs/index.html` | Bootstrap-style usage guide and class reference |
+| `docs/examples.html` | Visual boilerplate and component gallery |
+| `docs/team-timeline.html` | Team timeline example |
+| `docs/left-timeline.html` | Left timeline example |
 | `assets/images/` | Local demonstration images used by the boilerplate |
 
 ## Quick Start
@@ -136,9 +139,9 @@ The framework includes reusable components for:
 - Typography and alignment utilities
 - Spacing, display, flex, width, and visibility utilities
 
-Open `index.html` to view the component gallery.
+Open `index.html` to view the root GitHub Pages component gallery.
 
-Open `usage.html` for the full class and component reference.
+Open `docs/index.html` for the full class and component reference.
 
 ### Image-card carousel
 
@@ -222,7 +225,7 @@ Example:
 </header>
 ```
 
-Open `usage.html#editorial-storytelling` for copy-and-paste examples, modifiers, responsive behavior, and accessibility guidance.
+Open `docs/index.html#editorial-storytelling` for copy-and-paste examples, modifiers, responsive behavior, and accessibility guidance.
 
 
 ### Team timeline
@@ -244,7 +247,7 @@ Open `usage.html#editorial-storytelling` for copy-and-paste examples, modifiers,
 
 Use `bmc-team-timeline-media-hex` instead of `bmc-team-timeline-media-circle` for regular, equal-sided hexagon portraits. Add `bmc-team-timeline-compact` to the timeline for smaller desktop images.
 
-Add `bmc-team-timeline-left` to place the timeline rail on the left and keep every entry to its right. For historical or milestone timelines, wrap an existing MooreKit pill in `bmc-team-timeline-year`; use `bmc-team-timeline-gallery` for image stacks. See `left-timeline.html` for a complete converted example.
+Add `bmc-team-timeline-left` to place the timeline rail on the left and keep every entry to its right. For historical or milestone timelines, wrap an existing MooreKit pill in `bmc-team-timeline-year`; use `bmc-team-timeline-gallery` for image stacks. See `docs/left-timeline.html` for a complete converted example.
 
 ## GitHub Pages Structure
 
@@ -253,7 +256,11 @@ Upload the project folder as a unit:
 ```text
 bmc-v3-framework/
 ├── index.html
-├── usage.html
+├── docs/
+│   ├── index.html
+│   ├── examples.html
+│   ├── team-timeline.html
+│   └── left-timeline.html
 ├── bmc-v3.css
 ├── bmc-v3.min.css
 ├── bmc-v3.js
@@ -290,8 +297,10 @@ This allows the framework to work from a GitHub Pages project directory or subdi
 
 ## Documentation
 
-- [`index.html`](index.html) — component gallery and boilerplate
-- [`usage.html`](usage.html) — usage guide and complete class reference
+- [`docs/index.html`](docs/index.html) — usage guide and complete class reference
+- [`docs/examples.html`](docs/examples.html) — component gallery and boilerplate
+- [`docs/team-timeline.html`](docs/team-timeline.html) — team timeline example
+- [`docs/left-timeline.html`](docs/left-timeline.html) — left timeline example
 - [`bmc-v3.css`](bmc-v3.css) — framework stylesheet
 - [`bmc-v3.min.css`](bmc-v3.min.css) — minified stylesheet
 - [`bmc-v3.js`](bmc-v3.js) — carousel initializer

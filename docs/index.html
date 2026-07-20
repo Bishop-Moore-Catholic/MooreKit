@@ -1,0 +1,1668 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MooreKit Usage Documentation</title>
+  <link rel="stylesheet" href="../bmc-v3.css">
+  <script src="../bmc-v3.js" defer></script>
+  <style>
+    :root {
+      color-scheme: light;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: #fff;
+      color: #242122;
+      font-family: "Futura PT", "Avenir Next", Avenir, Montserrat, Arial, sans-serif;
+    }
+
+    .docs-topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      border-bottom: 1px solid #d5d2d2;
+      background: #fff;
+    }
+
+    .docs-topbar-inner {
+      display: flex;
+      min-height: 64px;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-inline: clamp(1rem, 3vw, 2rem);
+    }
+
+    .docs-brand {
+      color: #242122;
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .docs-toplinks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .75rem 1rem;
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    .docs-toplinks a {
+      color: #5f5b5c;
+      text-decoration: none;
+    }
+
+    .docs-toplinks a:hover,
+    .docs-toplinks a:focus-visible {
+      color: #242122;
+    }
+
+    .docs-layout {
+      display: grid;
+      grid-template-columns: minmax(220px, 280px) minmax(0, 1fr) minmax(180px, 240px);
+      gap: clamp(1.5rem, 3vw, 3rem);
+      width: min(100% - 2rem, 1480px);
+      margin-inline: auto;
+    }
+
+    .docs-sidebar,
+    .docs-on-this-page {
+      position: sticky;
+      top: 88px;
+      max-height: calc(100svh - 108px);
+      overflow: auto;
+      padding-block: 2rem;
+    }
+
+    .docs-sidebar h2,
+    .docs-on-this-page h2 {
+      margin: 0 0 .75rem;
+      color: #5f5b5c;
+      font-size: .75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .docs-nav-list,
+    .docs-page-list {
+      display: grid;
+      gap: .1rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .docs-nav-list a,
+    .docs-page-list a {
+      display: block;
+      padding: .35rem 0;
+      color: #5f5b5c;
+      font-size: .9rem;
+      line-height: 1.3;
+      text-decoration: none;
+    }
+
+    .docs-nav-list a:hover,
+    .docs-page-list a:hover,
+    .docs-nav-list a:focus-visible,
+    .docs-page-list a:focus-visible {
+      color: #242122;
+      text-decoration: underline;
+      text-decoration-color: #ddb75f;
+      text-decoration-thickness: 3px;
+      text-underline-offset: .2em;
+    }
+
+    .docs-main {
+      min-width: 0;
+      padding-block: clamp(2rem, 4vw, 4rem);
+    }
+
+    .docs-hero {
+      padding-bottom: clamp(2rem, 5vw, 4rem);
+      border-bottom: 1px solid #d5d2d2;
+    }
+
+    .docs-section {
+      padding-block: clamp(2.5rem, 5vw, 4.5rem);
+      border-bottom: 1px solid #d5d2d2;
+      scroll-margin-top: 88px;
+    }
+
+    .docs-section > :last-child {
+      margin-bottom: 0;
+    }
+
+    .docs-section > h2 {
+      margin-bottom: .85rem;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.1;
+    }
+
+    .docs-section > h3 {
+      margin-top: 2rem;
+      margin-bottom: .75rem;
+      font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+    }
+
+    .docs-section > h4 {
+      margin-top: 1.5rem;
+      margin-bottom: .5rem;
+      font-size: 1rem;
+    }
+
+    .docs-lead {
+      max-width: 68ch;
+      color: #5f5b5c;
+      font-size: clamp(1.05rem, 1.8vw, 1.25rem);
+    }
+
+    .docs-callout {
+      margin-block: 1.5rem;
+      padding: 1rem 1.25rem;
+      border-left: 4px solid #ddb75f;
+      background: #f5f3f1;
+    }
+
+    .docs-example {
+      margin-block: 1.25rem;
+      padding: clamp(1rem, 2vw, 1.5rem);
+      border: 1px solid #d5d2d2;
+      background: #fff;
+    }
+
+    .docs-example-dark {
+      background: #242122;
+    }
+
+    .docs-example-label {
+      display: block;
+      margin-bottom: .85rem;
+      color: #5f5b5c;
+      font-size: .72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .docs-example-dark .docs-example-label {
+      color: #fff;
+    }
+
+    .docs-dark-sample {
+      display: inline-flex;
+      padding: .5rem;
+      background: #242122;
+    }
+
+    .docs-code {
+      display: block;
+      margin: 1rem 0 1.5rem;
+      padding: 1rem;
+      overflow: auto;
+      border: 1px solid #333132;
+      background: #242122;
+      color: #fff;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: .86rem;
+      line-height: 1.55;
+      white-space: pre;
+    }
+
+    .docs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-block: 1rem 1.5rem;
+      table-layout: fixed;
+    }
+
+    .docs-table th,
+    .docs-table td {
+      padding: .75rem;
+      border: 1px solid #d5d2d2;
+      vertical-align: top;
+      text-align: left;
+      overflow-wrap: anywhere;
+    }
+
+    .docs-table th {
+      background: #f5f3f1;
+      font-weight: 800;
+    }
+
+    .docs-token-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: .65rem;
+      margin-block: 1rem 1.5rem;
+    }
+
+    .docs-token-grid code,
+    .docs-class-index code {
+      display: block;
+      padding: .45rem .55rem;
+      border: 1px solid #d5d2d2;
+      background: #f5f3f1;
+      color: #242122;
+      font-size: .84rem;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    .docs-class-index {
+      columns: 3 220px;
+      column-gap: 1rem;
+    }
+
+    .docs-class-index code {
+      break-inside: avoid;
+      margin-bottom: .45rem;
+    }
+
+    .docs-color-swatch {
+      display: inline-block;
+      width: 1rem;
+      height: 1rem;
+      margin-right: .35rem;
+      border: 1px solid #d5d2d2;
+      vertical-align: -.15em;
+    }
+
+    .docs-swatch-black { background: #242122; }
+    .docs-swatch-gold { background: #ddb75f; }
+    .docs-swatch-light { background: #f5f3f1; }
+    .docs-swatch-white { background: #fff; }
+
+    .docs-grid-demo {
+      display: grid;
+      gap: .5rem;
+      margin-block: 1rem;
+    }
+
+    .docs-grid-demo > * {
+      padding: .75rem;
+      background: #f5f3f1;
+      border: 1px solid #d5d2d2;
+      font-size: .85rem;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    .docs-ratio-demo {
+      display: grid;
+      place-items: center;
+      background: #f5f3f1;
+      color: #5f5b5c;
+      font-weight: 800;
+    }
+
+    .docs-hero-demo {
+      min-height: 360px !important;
+    }
+
+    @media (max-width: 1180px) {
+      .docs-layout {
+        grid-template-columns: minmax(200px, 250px) minmax(0, 1fr);
+      }
+
+      .docs-on-this-page {
+        display: none;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .docs-layout {
+        display: block;
+      }
+
+      .docs-sidebar {
+        position: static;
+        max-height: none;
+        padding-block: 1rem;
+        border-bottom: 1px solid #d5d2d2;
+      }
+
+      .docs-nav-list {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
+
+      .docs-topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding-block: .85rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="bmc-v3">
+  <header class="docs-topbar">
+    <div class="docs-topbar-inner">
+      <a class="docs-brand" href="#intro">MooreKit</a>
+      <nav class="docs-toplinks" aria-label="Primary">
+        <a href="examples.html">Gallery</a>
+        <a href="team-timeline.html">Team timeline</a>
+        <a href="left-timeline.html">Left timeline</a>
+        <a href="../README.md">README</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="docs-layout">
+    <aside class="docs-sidebar" aria-label="Documentation navigation">
+      <h2>Browse docs</h2>
+      <ol class="docs-nav-list">
+        <li><a href="#intro">Introduction</a></li>
+        <li><a href="#quick-start">Quick start</a></li>
+        <li><a href="#buttons">Buttons</a></li>
+        <li><a href="#callouts">Callouts</a></li>
+        <li><a href="#cards">Cards</a></li>
+        <li><a href="#carousel">Carousel</a></li>
+        <li><a href="#containers">Containers</a></li>
+        <li><a href="#dividers">Dividers</a></li>
+        <li><a href="#editorial-storytelling">Editorial</a></li>
+        <li><a href="#grid">Grid</a></li>
+        <li><a href="#hero">Hero</a></li>
+        <li><a href="#hexagons">Hexagons</a></li>
+        <li><a href="#image-cards">Image cards</a></li>
+        <li><a href="#image-shapes">Image shapes</a></li>
+        <li><a href="#legacy-cards">Legacy cards</a></li>
+        <li><a href="#lists">Lists</a></li>
+        <li><a href="#pills">Pills</a></li>
+        <li><a href="#quotes">Quotes</a></li>
+        <li><a href="#ratios">Ratios</a></li>
+        <li><a href="#sections">Sections</a></li>
+        <li><a href="#stats">Stats</a></li>
+        <li><a href="#tables">Tables</a></li>
+        <li><a href="#team-timeline">Team timeline</a></li>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#utilities">Utilities</a></li>
+        <li><a href="#class-index">Class index</a></li>
+      </ol>
+    </aside>
+
+    <main class="docs-main" id="intro">
+      <section class="docs-hero">
+        <span class="bmc-eyebrow">Usage documentation</span>
+        <h1 class="bmc-display-2 bmc-heading-split">Get started with <strong>MooreKit</strong></h1>
+        <p class="docs-lead">MooreKit is a scoped component and utility framework for Bishop Moore Catholic pages. Include the CSS, wrap your page content with <code>.bmc-v3</code>, and compose responsive components without leaking styles into the rest of the site.</p>
+        <div class="docs-callout">
+          <strong>Namespace rule:</strong> every framework selector is scoped under <code>.bmc-v3</code>. Add that wrapper once around the content you want MooreKit to style.
+        </div>
+      </section>
+
+      <section class="docs-section" id="quick-start">
+        <h2>Quick start</h2>
+        <p>Use the stylesheet on every MooreKit page. Add the JavaScript bundle only when the page includes a carousel.</p>
+        <h3>Starter template</h3>
+        <code class="docs-code">&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;MooreKit page&lt;/title&gt;
+  &lt;link rel="stylesheet" href="bmc-v3.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;main class="bmc-v3"&gt;
+    &lt;section class="bmc-section"&gt;
+      &lt;div class="bmc-container"&gt;
+        &lt;span class="bmc-eyebrow"&gt;Bishop Moore Catholic&lt;/span&gt;
+        &lt;h1 class="bmc-heading-1 bmc-heading-split"&gt;Build &lt;strong&gt;Something Moore&lt;/strong&gt;&lt;/h1&gt;
+        &lt;p class="bmc-lead"&gt;Compose scoped components and utilities.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+  &lt;script src="bmc-v3.js" defer&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code>
+
+        <h3>Included files</h3>
+        <table class="docs-table">
+          <thead><tr><th>File</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td><code>bmc-v3.css</code></td><td>Readable framework stylesheet with components, layout, and utilities.</td></tr>
+            <tr><td><code>bmc-v3.min.css</code></td><td>Minified production stylesheet.</td></tr>
+            <tr><td><code>bmc-v3.js</code></td><td>Optional dependency-free carousel initializer for <code>[data-bmc-carousel]</code>.</td></tr>
+            <tr><td><code>docs/index.html</code></td><td>This Bootstrap-style usage guide and class reference.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="docs-section" id="buttons">
+        <h2>Buttons</h2>
+        <p>Buttons use <code>.bmc-btn</code> on links or buttons. Avoid adding generic site button classes to the same element.</p>
+        <div class="docs-example">
+          <span class="docs-example-label">Example</span>
+          <div class="bmc-d-flex bmc-flex-wrap bmc-gap-2 bmc-align-center">
+            <a class="bmc-btn" href="#">Default</a>
+            <a class="bmc-btn bmc-btn-dark" href="#">Dark</a>
+            <a class="bmc-btn bmc-btn-outline" href="#">Outline</a>
+            <span class="docs-dark-sample">
+              <a class="bmc-btn bmc-btn-light" href="#">Light</a>
+            </span>
+            <a class="bmc-btn bmc-btn-sm" href="#">Small</a>
+            <a class="bmc-btn bmc-btn-lg" href="#">Large</a>
+          </div>
+        </div>
+        <code class="docs-code">&lt;a class="bmc-btn" href="#"&gt;Default&lt;/a&gt;
+&lt;a class="bmc-btn bmc-btn-dark" href="#"&gt;Dark&lt;/a&gt;
+&lt;a class="bmc-btn bmc-btn-outline" href="#"&gt;Outline&lt;/a&gt;
+&lt;a class="bmc-btn bmc-btn-light" href="#"&gt;Light&lt;/a&gt;
+&lt;a class="bmc-btn bmc-btn-sm" href="#"&gt;Small&lt;/a&gt;
+&lt;a class="bmc-btn bmc-btn-lg" href="#"&gt;Large&lt;/a&gt;
+&lt;button class="bmc-btn bmc-btn-block" type="button"&gt;Block button&lt;/button&gt;</code>
+        <div class="docs-token-grid">
+          <code>.bmc-btn</code><code>.bmc-btn-dark</code><code>.bmc-btn-outline</code><code>.bmc-btn-light</code><code>.bmc-btn-sm</code><code>.bmc-btn-lg</code><code>.bmc-btn-block</code>
+        </div>
+      </section>
+
+      <section class="docs-section" id="callouts">
+        <h2>Callouts</h2>
+        <p>Callouts highlight important notes with a gold accent rule.</p>
+        <div class="docs-example">
+          <span class="docs-example-label">Example</span>
+          <div class="bmc-callout">
+            <h3 class="bmc-heading-3">Campaign update</h3>
+            <p class="bmc-mb-0">Use callouts for important notes, deadlines, or page-specific context.</p>
+          </div>
+        </div>
+        <code class="docs-code">&lt;div class="bmc-callout"&gt;
+  &lt;h3 class="bmc-heading-3"&gt;Campaign update&lt;/h3&gt;
+  &lt;p&gt;Use callouts for important notes, deadlines, or page-specific context.&lt;/p&gt;
+&lt;/div&gt;</code>
+      </section>
+
+      <section class="docs-section" id="cards">
+        <h2>Cards</h2>
+        <p>Cards provide equal-height content blocks. Combine them with grid utilities for responsive layouts.</p>
+        <div class="docs-example">
+          <span class="docs-example-label">Examples</span>
+          <div class="bmc-grid bmc-grid-4">
+            <article class="bmc-card">
+              <h3 class="bmc-heading-3">Default</h3>
+              <p>Gray background for general content.</p>
+            </article>
+            <article class="bmc-card bmc-card-white">
+              <h3 class="bmc-heading-3">White</h3>
+              <p>White background for cards on tinted sections.</p>
+            </article>
+            <article class="bmc-card bmc-card-dark">
+              <h3 class="bmc-heading-3 bmc-text-white">Dark</h3>
+              <p class="bmc-text-white">High-contrast feature messaging.</p>
+            </article>
+            <article class="bmc-card bmc-card-gold">
+              <h3 class="bmc-heading-3">Gold</h3>
+              <p>Campaign and emphasis panels.</p>
+            </article>
+          </div>
+        </div>
+        <code class="docs-code">&lt;article class="bmc-card"&gt;...&lt;/article&gt;
+&lt;article class="bmc-card bmc-card-white"&gt;...&lt;/article&gt;
+&lt;article class="bmc-card bmc-card-dark"&gt;...&lt;/article&gt;
+&lt;article class="bmc-card bmc-card-gold"&gt;...&lt;/article&gt;</code>
+      </section>
+
+      <section class="docs-section" id="carousel">
+        <h2>Carousel</h2>
+        <p>The image-card carousel is progressively enhanced by <code>bmc-v3.js</code>. It supports buttons, keyboard arrow navigation on the viewport, status text, scroll snapping, reduced-motion preferences, optional looping, and media pausing for hidden slides.</p>
+        <div class="docs-example">
+          <span class="docs-example-label">Example</span>
+          <div class="bmc-carousel" data-bmc-carousel data-bmc-carousel-loop="true">
+            <div class="bmc-carousel-header">
+              <div>
+                <span class="bmc-eyebrow">Imagine Moore</span>
+                <h3 class="bmc-heading-2 bmc-mb-0">Project <strong>Updates</strong></h3>
+              </div>
+              <div class="bmc-carousel-actions" aria-label="Project update carousel controls">
+                <button class="bmc-carousel-button" type="button" data-bmc-carousel-prev aria-label="Previous project updates"><span aria-hidden="true">&larr;</span></button>
+                <button class="bmc-carousel-button" type="button" data-bmc-carousel-next aria-label="Next project updates"><span aria-hidden="true">&rarr;</span></button>
+              </div>
+            </div>
+            <div class="bmc-carousel-viewport" data-bmc-carousel-viewport tabindex="0" aria-label="Project updates">
+              <ul class="bmc-carousel-track" data-bmc-carousel-track>
+                <li class="bmc-carousel-slide" data-bmc-carousel-slide>
+                  <article class="bmc-image-card">
+                    <div class="bmc-image-card-media bmc-image-card-media-landscape">
+                      <img src="../assets/images/hero-stage.png" alt="Students performing on stage">
+                    </div>
+                    <div class="bmc-image-card-body">
+                      <p class="bmc-carousel-meta">July 2026</p>
+                      <h4 class="bmc-carousel-title">Stage Work Continues</h4>
+                      <p>Use short body copy so cards scan quickly.</p>
+                    </div>
+                  </article>
+                </li>
+                <li class="bmc-carousel-slide" data-bmc-carousel-slide>
+                  <article class="bmc-image-card">
+                    <div class="bmc-image-card-media bmc-image-card-media-square bmc-image-card-media-cover">
+                      <img src="../assets/images/legacy-science-current.jpg" alt="Students in a science classroom">
+                    </div>
+                    <div class="bmc-image-card-body">
+                      <p class="bmc-carousel-meta">May 2026</p>
+                      <h4 class="bmc-carousel-title">Science Labs</h4>
+                      <p>Use cover when intentional cropping is preferred.</p>
+                    </div>
+                  </article>
+                </li>
+                <li class="bmc-carousel-slide" data-bmc-carousel-slide>
+                  <article class="bmc-image-card">
+                    <div class="bmc-image-card-media bmc-image-card-media-portrait">
+                      <img src="../assets/images/legacy-football-historic.png" alt="Historic football player">
+                    </div>
+                    <div class="bmc-image-card-body">
+                      <p class="bmc-carousel-meta">Archive</p>
+                      <h4 class="bmc-carousel-title">Legacy Moment</h4>
+                      <p>Portrait media preserves the full image by default.</p>
+                    </div>
+                  </article>
+                </li>
+                <li class="bmc-carousel-slide" data-bmc-carousel-slide>
+                  <article class="bmc-image-card">
+                    <div class="bmc-image-card-media bmc-image-card-media-landscape">
+                      <img src="../assets/images/legacy-science-historic.jpg" alt="Historic science classroom">
+                    </div>
+                    <div class="bmc-image-card-body">
+                      <p class="bmc-carousel-meta">Archive</p>
+                      <h4 class="bmc-carousel-title">Then and Now</h4>
+                      <p>Add more slides with the same item structure.</p>
+                    </div>
+                  </article>
+                </li>
+              </ul>
+            </div>
+            <p class="bmc-carousel-status" data-bmc-carousel-status aria-live="polite"></p>
+          </div>
+        </div>
+        <code class="docs-code">&lt;div class="bmc-carousel" data-bmc-carousel data-bmc-carousel-loop="true"&gt;
+  &lt;div class="bmc-carousel-header"&gt;
+    &lt;div&gt;
+      &lt;span class="bmc-eyebrow"&gt;Imagine Moore&lt;/span&gt;
+      &lt;h2 class="bmc-heading-2"&gt;Project &lt;strong&gt;Updates&lt;/strong&gt;&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class="bmc-carousel-actions" aria-label="Carousel controls"&gt;
+      &lt;button class="bmc-carousel-button" type="button" data-bmc-carousel-prev aria-label="Previous"&gt;&amp;larr;&lt;/button&gt;
+      &lt;button class="bmc-carousel-button" type="button" data-bmc-carousel-next aria-label="Next"&gt;&amp;rarr;&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class="bmc-carousel-viewport" data-bmc-carousel-viewport tabindex="0" aria-label="Project updates"&gt;
+    &lt;ul class="bmc-carousel-track" data-bmc-carousel-track&gt;
+      &lt;li class="bmc-carousel-slide" data-bmc-carousel-slide&gt;
+        &lt;article class="bmc-image-card"&gt;...&lt;/article&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
+
+  &lt;p class="bmc-carousel-status" data-bmc-carousel-status aria-live="polite"&gt;&lt;/p&gt;
+&lt;/div&gt;</code>
+        <table class="docs-table">
+          <thead><tr><th>Variation</th><th>How to use it</th></tr></thead>
+          <tbody>
+            <tr><td>Default finite carousel</td><td>Use <code>data-bmc-carousel</code> without the loop attribute.</td></tr>
+            <tr><td>Looping carousel</td><td>Add <code>data-bmc-carousel-loop="true"</code>.</td></tr>
+            <tr><td>Dynamic markup</td><td>Run <code>window.MooreKit.initCarousels(containerElement)</code> after injecting carousel HTML.</td></tr>
+            <tr><td>Media ratios</td><td>Use <code>.bmc-image-card-media-square</code>, <code>.bmc-image-card-media-portrait</code>, or <code>.bmc-image-card-media-landscape</code>.</td></tr>
+            <tr><td>Media crop</td><td>Add <code>.bmc-image-card-media-cover</code> when image or video cropping is intentional.</td></tr>
+            <tr><td>YouTube pause support</td><td>Add <code>?enablejsapi=1</code> to the embed URL and <code>data-bmc-video</code> to the <code>iframe</code>.</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section class="docs-section" id="containers">
+        <h2>Containers</h2>
+        <p>Containers control horizontal page width and responsive gutters.</p>
+        <table class="docs-table">
+          <thead><tr><th>Class</th><th>Behavior</th></tr></thead>
+          <tbody>
+            <tr><td><code>.bmc-container</code></td><td>Centered container capped at 1200px.</td></tr>
+            <tr><td><code>.bmc-container-fluid</code></td><td>Full-width container with responsive side padding.</td></tr>
+            <tr><td><code>.bmc-container-narrow</code></td><td>Centered reading-width container capped at 850px.</td></tr>
+          </tbody>
+        </table>
+        <code class="docs-code">&lt;section class="bmc-section"&gt;
+  &lt;div class="bmc-container"&gt;Standard content&lt;/div&gt;
+&lt;/section&gt;
+
+&lt;section class="bmc-section"&gt;
+  &lt;div class="bmc-container-narrow"&gt;Reading content&lt;/div&gt;
+&lt;/section&gt;</code>
+      </section>
+
+      <section class="docs-section" id="dividers">
+        <h2>Dividers</h2>
+        <p>Use <code>.bmc-divider</code> for simple horizontal separators.</p>
+        <div class="docs-example">
+          <p>Content before the divider.</p>
+          <hr class="bmc-divider">
+          <p class="bmc-mb-0">Content after the divider.</p>
+        </div>
+        <code class="docs-code">&lt;hr class="bmc-divider"&gt;</code>
+      </section>
+
+      <section class="docs-section" id="editorial-storytelling">
+        <h2>Editorial</h2>
+        <p>Editorial and storytelling components use the <code>.bmc-v3-*</code> prefix for alumni profiles, honoree features, campaign stories, admissions stories, news features, and long-form profile pages. They do not require JavaScript.</p>
+
+        <h3>Bio</h3>
+        <div class="docs-example">
+          <article class="bmc-v3-bio">
+            <div class="bmc-v3-bio__media">
+              <figure class="bmc-v3-image-frame bmc-v3-image-frame--small">
+                <img src="../assets/images/team/tanya-starrett.jpg" alt="Sample portrait for an editorial biography">
+              </figure>
+            </div>
+            <div class="bmc-v3-bio__content">
+              <p class="bmc-v3-bio__eyebrow">Sample Profile</p>
+              <h3 class="bmc-v3-bio__name">Community Leadership Profile</h3>
+              <p class="bmc-v3-bio__role">Alumni Feature</p>
+              <div class="bmc-v3-bio__description">
+                <p>Use the biography card for profile summaries, honoree introductions, faculty features, or campaign story previews.</p>
+              </div>
+              <div class="bmc-v3-bio__actions">
+                <a class="bmc-btn bmc-btn-outline" href="#">Read Full Story</a>
+              </div>
+            </div>
+          </article>
+        </div>
+        <code class="docs-code">&lt;article class="bmc-v3-bio bmc-v3-bio--reverse"&gt;
+  &lt;div class="bmc-v3-bio__media"&gt;
+    &lt;figure class="bmc-v3-image-frame bmc-v3-image-frame--small"&gt;
+      &lt;img src="portrait.jpg" alt="Portrait of Person Name"&gt;
+    &lt;/figure&gt;
+  &lt;/div&gt;
+  &lt;div class="bmc-v3-bio__content"&gt;
+    &lt;p class="bmc-v3-bio__eyebrow"&gt;Legacy Gala Honoree&lt;/p&gt;
+    &lt;h2 class="bmc-v3-bio__name"&gt;Person Name&lt;/h2&gt;
+    &lt;p class="bmc-v3-bio__role"&gt;Class of 1985&lt;/p&gt;
+    &lt;div class="bmc-v3-bio__description"&gt;
+      &lt;p&gt;Biography content appears here.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="bmc-v3-bio__actions"&gt;
+      &lt;a class="bmc-btn bmc-btn-outline" href="#"&gt;Read Full Story&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code>
+        <div class="docs-token-grid">
+          <code>.bmc-v3-bio</code><code>.bmc-v3-bio--reverse</code><code>.bmc-v3-bio--compact</code><code>.bmc-v3-bio--stacked</code><code>.bmc-v3-bio__media</code><code>.bmc-v3-bio__content</code><code>.bmc-v3-bio__eyebrow</code><code>.bmc-v3-bio__name</code><code>.bmc-v3-bio__role</code><code>.bmc-v3-bio__description</code><code>.bmc-v3-bio__actions</code>
+        </div>
+
+        <h3>Editorial introduction and story header</h3>
+        <div class="docs-example">
+          <header class="bmc-v3-editorial-intro bmc-mb-4">
+            <p class="bmc-v3-editorial-intro__eyebrow">Legacy Gala Honoree</p>
+            <h3 class="bmc-v3-editorial-intro__title">A Life of Faith, Service, and Leadership</h3>
+            <p class="bmc-v3-editorial-intro__lead">This introduction style creates a strong opening for a profile while preserving semantic heading choices and readable line lengths.</p>
+          </header>
+          <header class="bmc-v3-story-header bmc-v3-story-header--center">
+            <p class="bmc-v3-story-header__eyebrow">Alumni Spotlight</p>
+            <h3 class="bmc-v3-story-header__title">How One Graduate Carries the Mission Forward</h3>
+            <p class="bmc-v3-story-header__lead">A concise deck can summarize the story before readers move into the full feature.</p>
+            <div class="bmc-v3-story-header__meta">
+              <span>By Bishop Moore Catholic</span>
+              <time datetime="2026-07-20">July 20, 2026</time>
+            </div>
+          </header>
+        </div>
+        <code class="docs-code">&lt;header class="bmc-v3-editorial-intro bmc-v3-editorial-intro--center"&gt;
+  &lt;p class="bmc-v3-editorial-intro__eyebrow"&gt;Legacy Gala Honoree&lt;/p&gt;
+  &lt;h1 class="bmc-v3-editorial-intro__title"&gt;Honoree Name&lt;/h1&gt;
+  &lt;p class="bmc-v3-editorial-intro__lead"&gt;Introductory text for the profile or feature.&lt;/p&gt;
+&lt;/header&gt;
+
+&lt;header class="bmc-v3-story-header bmc-v3-story-header--center"&gt;
+  &lt;p class="bmc-v3-story-header__eyebrow"&gt;Alumni Spotlight&lt;/p&gt;
+  &lt;h1 class="bmc-v3-story-header__title"&gt;A Meaningful Story Title&lt;/h1&gt;
+  &lt;p class="bmc-v3-story-header__lead"&gt;A concise introduction that summarizes the feature.&lt;/p&gt;
+  &lt;div class="bmc-v3-story-header__meta"&gt;
+    &lt;span&gt;By Bishop Moore Catholic&lt;/span&gt;
+    &lt;time datetime="2026-07-20"&gt;July 20, 2026&lt;/time&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code>
+        <div class="docs-token-grid">
+          <code>.bmc-v3-eyebrow</code><code>.bmc-v3-editorial-intro</code><code>.bmc-v3-editorial-intro--center</code><code>.bmc-v3-editorial-intro--right</code><code>.bmc-v3-editorial-intro--compact</code><code>.bmc-v3-story-header</code><code>.bmc-v3-story-header--center</code>
+        </div>
+
+        <h3>Image frame</h3>
+        <div class="docs-example">
+          <div class="bmc-grid bmc-grid-3">
+            <figure class="bmc-v3-image-frame">
+              <img src="../assets/images/hero-stage.png" alt="Students performing on stage">
+              <figcaption>Default frame</figcaption>
+            </figure>
+            <figure class="bmc-v3-image-frame bmc-v3-image-frame--reverse">
+              <img src="../assets/images/legacy-science-current.jpg" alt="Students in a science classroom">
+              <figcaption>Reverse frame</figcaption>
+            </figure>
+            <figure class="bmc-v3-image-frame bmc-v3-image-frame--dark bmc-v3-image-frame--small">
+              <img src="../assets/images/legacy-football-historic.png" alt="Historic football player">
+              <figcaption>Dark small frame</figcaption>
+            </figure>
+          </div>
+        </div>
+        <code class="docs-code">&lt;figure class="bmc-v3-image-frame bmc-v3-image-frame--interactive"&gt;
+  &lt;img src="image.jpg" alt="Description"&gt;
+  &lt;figcaption&gt;Optional image caption.&lt;/figcaption&gt;
+&lt;/figure&gt;</code>
+        <div class="docs-token-grid">
+          <code>.bmc-v3-image-frame</code><code>.bmc-v3-image-frame--small</code><code>.bmc-v3-image-frame--large</code><code>.bmc-v3-image-frame--dark</code><code>.bmc-v3-image-frame--reverse</code><code>.bmc-v3-image-frame--interactive</code>
+        </div>
+
+        <h3>Pullquote</h3>
+        <div class="docs-example">
+          <blockquote class="bmc-v3-pullquote">
+            <p>"Every story points back to the people who made the mission visible."</p>
+            <footer><cite>Person Name, Title or Class Year</cite></footer>
+          </blockquote>
+          <blockquote class="bmc-v3-pullquote bmc-v3-pullquote--dark bmc-v3-pullquote--center bmc-mb-0">
+            <p>"The dark and centered modifiers support high-contrast feature layouts."</p>
+          </blockquote>
+        </div>
+        <code class="docs-code">&lt;blockquote class="bmc-v3-pullquote bmc-v3-pullquote--compact"&gt;
+  &lt;p&gt;The quoted statement appears here.&lt;/p&gt;
+  &lt;footer&gt;&lt;cite&gt;Person Name, Title or Class Year&lt;/cite&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;</code>
+        <div class="docs-token-grid">
+          <code>.bmc-v3-pullquote</code><code>.bmc-v3-pullquote--center</code><code>.bmc-v3-pullquote--dark</code><code>.bmc-v3-pullquote--compact</code>
+        </div>
+
+        <h3>Story stats and divider</h3>
+        <div class="docs-example">
+          <div class="bmc-v3-stats bmc-v3-stats--center bmc-v3-stats--bordered" aria-label="Sample profile highlights">
+            <div class="bmc-v3-stat">
+              <strong class="bmc-v3-stat__value">1960</strong>
+              <span class="bmc-v3-stat__label">Class Year</span>
+            </div>
+            <div class="bmc-v3-stat">
+              <strong class="bmc-v3-stat__value">40+</strong>
+              <span class="bmc-v3-stat__label">Years of Service</span>
+            </div>
+            <div class="bmc-v3-stat">
+              <strong class="bmc-v3-stat__value">3</strong>
+              <span class="bmc-v3-stat__label">Generations Connected</span>
+            </div>
+          </div>
+          <hr class="bmc-v3-story-divider">
+          <hr class="bmc-v3-story-divider bmc-v3-story-divider--short">
+          <hr class="bmc-v3-story-divider bmc-v3-story-divider--center">
+        </div>
+        <code class="docs-code">&lt;div class="bmc-v3-stats bmc-v3-stats--dark bmc-v3-stats--bordered" aria-label="Profile highlights"&gt;
+  &lt;div class="bmc-v3-stat"&gt;
+    &lt;strong class="bmc-v3-stat__value"&gt;1960&lt;/strong&gt;
+    &lt;span class="bmc-v3-stat__label"&gt;Class Year&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;hr class="bmc-v3-story-divider bmc-v3-story-divider--dark"&gt;</code>
+        <div class="docs-token-grid">
+          <code>.bmc-v3-stats</code><code>.bmc-v3-stats--center</code><code>.bmc-v3-stats--dark</code><code>.bmc-v3-stats--bordered</code><code>.bmc-v3-stat</code><code>.bmc-v3-stat__value</code><code>.bmc-v3-stat__label</code><code>.bmc-v3-story-divider</code><code>.bmc-v3-story-divider--short</code><code>.bmc-v3-story-divider--center</code><code>.bmc-v3-story-divider--dark</code>
+        </div>
+      </section>
+
+      <section class="docs-section" id="grid">
+        <h2>Grid</h2>
+        <p>MooreKit includes a Bootstrap-style 12-column flex grid, a simple CSS grid helper, and an alternating editorial grid.</p>
+        <h3>12-column responsive grid</h3>
+        <div class="docs-example">
+          <span class="docs-example-label">Example</span>
+          <div class="bmc-row bmc-g-3">
+            <div class="bmc-col-12 bmc-col-md-8"><div class="docs-grid-demo"><span>.bmc-col-md-8</span></div></div>
+            <div class="bmc-col-12 bmc-col-md-4"><div class="docs-grid-demo"><span>.bmc-col-md-4</span></div></div>
+            <div class="bmc-col-6 bmc-col-lg-3"><div class="docs-grid-demo"><span>.bmc-col-lg-3</span></div></div>
+            <div class="bmc-col-6 bmc-col-lg-3"><div class="docs-grid-demo"><span>.bmc-col-lg-3</span></div></div>
+            <div class="bmc-col-6 bmc-col-lg-3"><div class="docs-grid-demo"><span>.bmc-col-lg-3</span></div></div>
+            <div class="bmc-col-6 bmc-col-lg-3"><div class="docs-grid-demo"><span>.bmc-col-lg-3</span></div></div>
+          </div>
+        </div>
+        <code class="docs-code">&lt;div class="bmc-row bmc-g-3"&gt;
+  &lt;div class="bmc-col-12 bmc-col-md-8"&gt;...&lt;/div&gt;
+  &lt;div class="bmc-col-12 bmc-col-md-4"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code>
+        <h3>Available columns and gutters</h3>
+        <p>Use <code>.bmc-col</code>, <code>.bmc-col-auto</code>, and <code>.bmc-col-1</code> through <code>.bmc-col-12</code>. Responsive column variants are available at <code>sm</code>, <code>md</code>, and <code>lg</code>: <code>.bmc-col-sm-*</code>, <code>.bmc-col-md-*</code>, and <code>.bmc-col-lg-*</code>. Gutters use <code>.bmc-g-0</code> through <code>.bmc-g-5</code>.</p>
+        <h3>CSS grid helpers</h3>
+        <div class="docs-example">
+          <div class="bmc-grid bmc-grid-4">
+            <div class="bmc-card">Grid 1</div>
+            <div class="bmc-card">Grid 2</div>
+            <div class="bmc-card">Grid 3</div>
+            <div class="bmc-card">Grid 4</div>
+          </div>
+        </div>
+        <code class="docs-code">&lt;div class="bmc-grid bmc-grid-4"&gt;
+  &lt;div&gt;Grid item&lt;/div&gt;
+  &lt;div&gt;Grid item&lt;/div&gt;
+&lt;/div&gt;</code>
+        <div class="docs-token-grid">
+          <code>.bmc-grid</code><code>.bmc-grid-2</code><code>.bmc-grid-3</code><code>.bmc-grid-4</code><code>.bmc-grid-auto</code>
+        </div>
+        <h3>Alternating grid</h3>
+        <p><code>.bmc-grid-alternate</code> places odd children in the left column and even children in the right column at 992px and wider. Add <code>.bmc-grid-alternate-align</code> to alternate text alignment.</p>
+        <code class="docs-code">&lt;div class="bmc-grid-alternate bmc-grid-alternate-align bmc-gap-4"&gt;
+  &lt;article&gt;Left on large screens&lt;/article&gt;
+  &lt;article&gt;Right on large screens&lt;/article&gt;
+  &lt;article&gt;Left on large screens&lt;/article&gt;
+&lt;/div&gt;</code>
+      </section>
+
+      <section class="docs-section" id="hero">
+        <h2>Hero</h2>
+        <p>The hero family creates a full-width media header with an overlay and bottom-aligned content.</p>
+        <div class="docs-example">
+          <section class="bmc-hero docs-hero-demo">
+            <img class="bmc-hero-media" src="../assets/images/hero-stage.png" alt="Students performing on stage">
+            <div class="bmc-hero-overlay"></div>
+            <div class="bmc-container bmc-hero-content">
+              <span class="bmc-eyebrow bmc-text-white">Bishop Moore Catholic</span>
+              <h3 class="bmc-heading-1 bmc-text-white bmc-mb-2">Hero component</h3>
+              <p class="bmc-lead bmc-text-white">Use real campaign or page imagery behind concise copy.</p>
+            </div>
+          </section>
+        </div>
+        <code class="docs-code">&lt;section class="bmc-hero"&gt;
+  &lt;img class="bmc-hero-media" src="image.jpg" alt="Description"&gt;
+  &lt;div class="bmc-hero-overlay"&gt;&lt;/div&gt;
+  &lt;div class="bmc-container bmc-hero-content"&gt;
+    &lt;span class="bmc-eyebrow bmc-text-white"&gt;Bishop Moore Catholic&lt;/span&gt;
+    &lt;h1 class="bmc-display-1 bmc-text-white"&gt;Page title&lt;/h1&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code>
+      </section>
+
+      <section class="docs-section" id="hexagons">
+        <h2>Hexagons</h2>
+        <p>Hexagons support two orientations, three colors, and three sizes. Add content with <code>.bmc-hex-content</code>, <code>.bmc-hex-value</code>, and <code>.bmc-hex-label</code>.</p>
+        <div class="docs-example">
+          <span class="docs-example-label">Examples</span>
+          <div class="bmc-d-flex bmc-flex-wrap bmc-gap-4 bmc-align-center">
+            <div class="bmc-hex bmc-hex-sm"><div class="bmc-hex-content"><span class="bmc-hex-value">6</span><span class="bmc-hex-label">Small</span></div></div>
+            <div class="bmc-hex"><div class="bmc-hex-content"><span class="bmc-hex-value">25</span><span class="bmc-hex-label">Default</span></div></div>
+            <div class="bmc-hex bmc-hex-lg bmc-hex-dark"><div class="bmc-hex-content"><span class="bmc-hex-value">70</span><span class="bmc-hex-label">Large dark</span></div></div>
+            <div class="bmc-hex bmc-hex-light"><div class="bmc-hex-content"><span class="bmc-hex-value">12</span><span class="bmc-hex-label">Light</span></div></div>
+            <div class="bmc-hex bmc-hex-outline"><div class="bmc-hex-content"><span class="bmc-hex-value">8</span><span class="bmc-hex-label">Outline</span></div></div>
+            <div class="bmc-hex bmc-hex-pointed bmc-hex-dark"><div class="bmc-hex-content"><span class="bmc-hex-value">1</span><span class="bmc-hex-label">Pointed</span></div></div>
+          </div>
+        </div>
+        <code class="docs-code">&lt;div class="bmc-hex bmc-hex-lg bmc-hex-dark"&gt;
+  &lt;div class="bmc-hex-content"&gt;
+    &lt;span class="bmc-hex-value"&gt;70&lt;/span&gt;
+    &lt;span class="bmc-hex-label"&gt;Years&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="bmc-hex bmc-hex-pointed bmc-hex-outline"&gt;...&lt;/div&gt;</code>
+        <div class="docs-token-grid">
+          <code>.bmc-hex-sm</code><code>.bmc-hex</code><code>.bmc-hex-lg</code><code>.bmc-hex-dark</code><code>.bmc-hex-light</code><code>.bmc-hex-outline</code><code>.bmc-hex-pointed</code>
+        </div>
+      </section>
+
+      <section class="docs-section" id="image-cards">
+        <h2>Image cards</h2>
+        <p>Image cards can be simple caption cards, body cards, or carousel cards with a dedicated media stage.</p>
+        <div class="docs-example">
+          <span class="docs-example-label">Examples</span>
+          <div class="bmc-grid bmc-grid-3">
+            <article class="bmc-image-card">
+              <img src="../assets/images/hero-stage.png" alt="Students performing on stage">
+              <div class="bmc-image-card-caption">Default portrait ratio</div>
+            </article>
+            <article class="bmc-image-card bmc-image-card-landscape">
+              <img src="../assets/images/legacy-science-current.jpg" alt="Students in a science classroom">
+              <div class="bmc-image-card-caption">Landscape card</div>
+            </article>
+            <article class="bmc-image-card bmc-image-card-square">
+              <img src="../assets/images/legacy-football-historic.png" alt="Historic football player">
+              <div class="bmc-image-card-caption">Square card</div>
+            </article>
+          </div>
+        </div>
+        <code class="docs-code">&lt;article class="bmc-image-card bmc-image-card-landscape"&gt;
+  &lt;img src="image.jpg" alt="Description"&gt;
+  &lt;div class="bmc-image-card-caption"&gt;Caption&lt;/div&gt;
+&lt;/article&gt;
+
+&lt;article class="bmc-image-card"&gt;
+  &lt;div class="bmc-image-card-media bmc-image-card-media-square bmc-image-card-media-cover"&gt;
+    &lt;img src="image.jpg" alt="Description"&gt;
+  &lt;/div&gt;
+  &lt;div class="bmc-image-card-body"&gt;...&lt;/div&gt;
+&lt;/article&gt;</code>
+        <div class="docs-token-grid">
+          <code>.bmc-image-card</code><code>.bmc-image-card-body</code><code>.bmc-image-card-caption</code><code>.bmc-image-card-landscape</code><code>.bmc-image-card-square</code><code>.bmc-image-card-media</code><code>.bmc-image-card-media-square</code><code>.bmc-image-card-media-portrait</code><code>.bmc-image-card-media-landscape</code><code>.bmc-image-card-media-cover</code>
+        </div>
+      </section>
+
+      <section class="docs-section" id="image-shapes">
+        <h2>Image shapes</h2>
+        <p>Global image shapes are reusable cropped frames for cards, profiles, grids, and timelines.</p>
+        <div class="docs-example">
+          <span class="docs-example-label">Examples</span>
+          <div class="bmc-d-flex bmc-flex-wrap bmc-gap-4 bmc-align-center">
+            <div class="bmc-image-shape bmc-image-shape-sm bmc-image-circle"><img src="../assets/images/team/tanya-starrett.jpg" alt="Tanya Starrett"></div>
+            <div class="bmc-image-shape bmc-image-hex"><img src="../assets/images/team/kelly-carbone.jpg" alt="Kelly Carbone"></div>
+            <div class="bmc-image-shape bmc-image-shape-lg bmc-image-hex-pointed"><img src="../assets/images/team/genevieve-fable.jpg" alt="Genevieve Fable"></div>
+          </div>
+        </div>
+        <code class="docs-code">&lt;div class="bmc-image-shape bmc-image-circle"&gt;
+  &lt;img src="portrait.jpg" alt="Name"&gt;
+&lt;/div&gt;
+
+&lt;div class="bmc-image-shape bmc-image-shape-lg bmc-image-hex-pointed"&gt;
+  &lt;img src="portrait.jpg" alt="Name"&gt;
+&lt;/div&gt;</code>
+        <div class="docs-token-grid">
+          <code>.bmc-image-shape</code><code>.bmc-image-shape-sm</code><code>.bmc-image-shape-lg</code><code>.bmc-image-shape-fluid</code><code>.bmc-image-circle</code><code>.bmc-image-hex</code><code>.bmc-image-hex-pointed</code>
+        </div>
+      </section>
+
+      <section class="docs-section" id="legacy-cards">
+        <h2>Legacy cards</h2>
+        <p>Legacy cards use an image with a gold caption. Images are grayscale by default; add <code>.bmc-image-current</code> to keep the original color.</p>
+        <div class="docs-example">
+          <span class="docs-example-label">Examples</span>
+          <div class="bmc-grid bmc-grid-3">
+            <figure class="bmc-legacy-card">
+              <img src="../assets/images/legacy-football-historic.png" alt="Historic football player">
+              <figcaption>Default grayscale</figcaption>
+            </figure>
+            <figure class="bmc-legacy-card bmc-legacy-card-landscape">
+              <img class="bmc-image-current" src="../assets/images/legacy-science-current.jpg" alt="Students in a science classroom">
+              <figcaption>Landscape current</figcaption>
+            </figure>
+            <figure class="bmc-legacy-card bmc-legacy-card-square">
+              <img src="../assets/images/legacy-science-historic.jpg" alt="Historic science classroom">
+              <figcaption>Square legacy</figcaption>
+            </figure>
+          </div>
+        </div>
+        <code class="docs-code">&lt;figure class="bmc-legacy-card bmc-legacy-card-landscape"&gt;
+  &lt;img class="bmc-image-current" src="image.jpg" alt="Description"&gt;
+  &lt;figcaption&gt;Caption&lt;/figcaption&gt;
+&lt;/figure&gt;</code>
+        <div class="docs-token-grid">
+          <code>.bmc-legacy-card</code><code>.bmc-legacy-card-landscape</code><code>.bmc-legacy-card-square</code><code>.bmc-image-current</code>
+        </div>
+      </section>
+
+      <section class="docs-section" id="lists">
+        <h2>Lists</h2>
+        <p>List utilities cover unstyled lists, inline lists, and check-style lists.</p>
+        <div class="docs-example">
+          <div class="bmc-grid bmc-grid-3">
+            <div>
+              <span class="docs-example-label">Unstyled</span>
+              <ul class="bmc-list-unstyled">
+                <li>Academic excellence</li>
+                <li>Faith formation</li>
+                <li>Service leadership</li>
+              </ul>
+            </div>
+            <div>
+              <span class="docs-example-label">Inline</span>
+              <ul class="bmc-list-inline">
+                <li>Admissions</li>
+                <li>Arts</li>
+                <li>Athletics</li>
+              </ul>
+            </div>
+            <div>
+              <span class="docs-example-label">Check</span>
+              <ul class="bmc-list-check">
+                <li>Responsive by default</li>
+                <li>Scoped styles</li>
+                <li>Reusable classes</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <code class="docs-code">&lt;ul class="bmc-list-unstyled"&gt;...&lt;/ul&gt;
+&lt;ul class="bmc-list-inline"&gt;...&lt;/ul&gt;
+&lt;ul class="bmc-list-check"&gt;...&lt;/ul&gt;</code>
+      </section>
+
+      <section class="docs-section" id="pills">
+        <h2>Pills</h2>
+        <p>Pills are square-corner labels for years, categories, filters, and status text.</p>
+        <div class="docs-example">
+          <span class="docs-example-label">Examples</span>
+          <div class="bmc-d-flex bmc-flex-wrap bmc-gap-2">
+            <span class="bmc-pill">Default</span>
+            <span class="bmc-pill bmc-pill-gold">Gold</span>
+            <span class="bmc-pill bmc-pill-dark">Dark</span>
+            <span class="bmc-pill bmc-pill-outline">Outline</span>
+            <span class="bmc-pill bmc-pill-sm">Small</span>
+            <span class="bmc-pill bmc-pill-lg">Large</span>
+          </div>
+        </div>
+        <code class="docs-code">&lt;span class="bmc-pill"&gt;Default&lt;/span&gt;
+&lt;span class="bmc-pill bmc-pill-gold"&gt;Gold&lt;/span&gt;
+&lt;span class="bmc-pill bmc-pill-dark"&gt;Dark&lt;/span&gt;
+&lt;span class="bmc-pill bmc-pill-outline"&gt;Outline&lt;/span&gt;
+&lt;span class="bmc-pill bmc-pill-sm"&gt;Small&lt;/span&gt;
+&lt;span class="bmc-pill bmc-pill-lg"&gt;Large&lt;/span&gt;</code>
+      </section>
+
+      <section class="docs-section" id="quotes">
+        <h2>Quotes</h2>
+        <p>Quotes are centered gold editorial blocks for testimonials and pull quotes.</p>
+        <div class="docs-example">
+          <div class="bmc-quote">
+            <blockquote>"MooreKit lets us compose polished campaign pages while keeping the rest of the site untouched."</blockquote>
+            <cite>Advancement team</cite>
+          </div>
+        </div>
+        <code class="docs-code">&lt;div class="bmc-quote"&gt;
+  &lt;blockquote&gt;"Quote text."&lt;/blockquote&gt;
+  &lt;cite&gt;Source&lt;/cite&gt;
+&lt;/div&gt;</code>
+      </section>
+
+      <section class="docs-section" id="ratios">
+        <h2>Ratios</h2>
+        <p>Ratio helpers reserve responsive media space for iframes, images, and videos.</p>
+        <div class="docs-example">
+          <span class="docs-example-label">Examples</span>
+          <div class="bmc-grid bmc-grid-4">
+            <div class="bmc-ratio bmc-ratio-16x9"><div class="docs-ratio-demo">16x9</div></div>
+            <div class="bmc-ratio bmc-ratio-4x3"><div class="docs-ratio-demo">4x3</div></div>
+            <div class="bmc-ratio bmc-ratio-1x1"><div class="docs-ratio-demo">1x1</div></div>
+            <div class="bmc-ratio bmc-ratio-3x4"><div class="docs-ratio-demo">3x4</div></div>
+          </div>
+        </div>
+        <code class="docs-code">&lt;div class="bmc-ratio bmc-ratio-16x9"&gt;
+  &lt;iframe src="..." title="..." allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;</code>
+        <div class="docs-token-grid">
+          <code>.bmc-ratio</code><code>.bmc-ratio-16x9</code><code>.bmc-ratio-4x3</code><code>.bmc-ratio-1x1</code><code>.bmc-ratio-3x4</code>
+        </div>
+      </section>
+
+      <section class="docs-section" id="sections">
+        <h2>Sections</h2>
+        <p>Sections control vertical rhythm and background treatments.</p>
+        <div class="docs-example">
+          <div class="bmc-grid bmc-grid-4">
+            <div class="bmc-section bmc-card"><strong>.bmc-section</strong><br>Default spacing</div>
+            <div class="bmc-section-sm bmc-card"><strong>.bmc-section-sm</strong><br>Compact spacing</div>
+            <div class="bmc-section-dark bmc-p-3"><strong>.bmc-section-dark</strong></div>
+            <div class="bmc-section-gold bmc-p-3"><strong>.bmc-section-gold</strong></div>
+          </div>
+        </div>
+        <code class="docs-code">&lt;section class="bmc-section bmc-section-light"&gt;...&lt;/section&gt;
+&lt;section class="bmc-section-sm bmc-section-dark"&gt;...&lt;/section&gt;
+&lt;section class="bmc-section bmc-section-gold"&gt;...&lt;/section&gt;</code>
+        <div class="docs-token-grid">
+          <code>.bmc-section</code><code>.bmc-section-sm</code><code>.bmc-section-light</code><code>.bmc-section-dark</code><code>.bmc-section-gold</code>
+        </div>
+      </section>
+
+      <section class="docs-section" id="stats">
+        <h2>Stats</h2>
+        <p>Stats use a large value, uppercase label, and optional supporting copy.</p>
+        <div class="docs-example">
+          <div class="bmc-grid bmc-grid-3">
+            <article class="bmc-stat">
+              <span class="bmc-stat-value">56</span>
+              <span class="bmc-stat-label">Elective courses</span>
+              <p class="bmc-small bmc-text-muted bmc-mt-2">Short supporting description.</p>
+            </article>
+            <article class="bmc-stat">
+              <span class="bmc-stat-value">100%</span>
+              <span class="bmc-stat-label">Participation</span>
+              <p class="bmc-small bmc-text-muted bmc-mt-2">Use concise copy under each metric.</p>
+            </article>
+            <article class="bmc-stat">
+              <span class="bmc-stat-value">70</span>
+              <span class="bmc-stat-label">Years</span>
+              <p class="bmc-small bmc-text-muted bmc-mt-2">Works well in responsive grids.</p>
+            </article>
+          </div>
+        </div>
+        <code class="docs-code">&lt;article class="bmc-stat"&gt;
+  &lt;span class="bmc-stat-value"&gt;70&lt;/span&gt;
+  &lt;span class="bmc-stat-label"&gt;Years&lt;/span&gt;
+  &lt;p class="bmc-small bmc-text-muted"&gt;Supporting copy.&lt;/p&gt;
+&lt;/article&gt;</code>
+      </section>
+
+      <section class="docs-section" id="tables">
+        <h2>Tables</h2>
+        <p>Tables can be wrapped for horizontal scrolling, striped, or borderless.</p>
+        <div class="docs-example">
+          <div class="bmc-table-wrap">
+            <table class="bmc-table bmc-table-striped">
+              <thead><tr><th>Component</th><th>Variation</th><th>Class</th></tr></thead>
+              <tbody>
+                <tr><td>Buttons</td><td>Dark</td><td><code>.bmc-btn-dark</code></td></tr>
+                <tr><td>Cards</td><td>Gold</td><td><code>.bmc-card-gold</code></td></tr>
+                <tr><td>Ratios</td><td>Square</td><td><code>.bmc-ratio-1x1</code></td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <code class="docs-code">&lt;div class="bmc-table-wrap"&gt;
+  &lt;table class="bmc-table bmc-table-striped"&gt;...&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;table class="bmc-table bmc-table-borderless"&gt;...&lt;/table&gt;</code>
+        <div class="docs-token-grid">
+          <code>.bmc-table-wrap</code><code>.bmc-table</code><code>.bmc-table-striped</code><code>.bmc-table-borderless</code>
+        </div>
+      </section>
+
+      <section class="docs-section" id="team-timeline">
+        <h2>Team timeline</h2>
+        <p>The timeline supports alternating profile entries, a compact size, legacy shape aliases, global image-shape utilities, a left-rail layout, milestone pills, and galleries.</p>
+        <div class="docs-example">
+          <span class="docs-example-label">Alternating profile timeline</span>
+          <div class="bmc-team-timeline bmc-team-timeline-compact">
+            <article class="bmc-team-timeline-item">
+              <div class="bmc-team-timeline-media bmc-image-shape bmc-image-circle">
+                <img src="../assets/images/team/tanya-starrett.jpg" alt="Tanya Starrett">
+              </div>
+              <div class="bmc-team-timeline-content">
+                <h3 class="bmc-team-timeline-name">Tanya Starrett</h3>
+                <p class="bmc-team-timeline-role">Director of Advancement</p>
+                <p>Use circular portraits with <code>.bmc-image-circle</code>.</p>
+              </div>
+            </article>
+            <article class="bmc-team-timeline-item">
+              <div class="bmc-team-timeline-media bmc-image-shape bmc-image-hex-pointed">
+                <img src="../assets/images/team/kelly-carbone.jpg" alt="Kelly Carbone">
+              </div>
+              <div class="bmc-team-timeline-content">
+                <h3 class="bmc-team-timeline-name">Kelly Carbone</h3>
+                <p class="bmc-team-timeline-role">Partnership manager</p>
+                <p>Hex and pointed hex shapes are supported.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <code class="docs-code">&lt;div class="bmc-team-timeline bmc-team-timeline-compact"&gt;
+  &lt;article class="bmc-team-timeline-item"&gt;
+    &lt;div class="bmc-team-timeline-media bmc-image-shape bmc-image-circle"&gt;
+      &lt;img src="portrait.jpg" alt="Name"&gt;
+    &lt;/div&gt;
+    &lt;div class="bmc-team-timeline-content"&gt;
+      &lt;h3 class="bmc-team-timeline-name"&gt;Name&lt;/h3&gt;
+      &lt;p class="bmc-team-timeline-role"&gt;Role&lt;/p&gt;
+      &lt;p&gt;Biography or description.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code>
+        <h3>Left timeline variation</h3>
+        <code class="docs-code">&lt;div class="bmc-team-timeline bmc-team-timeline-left"&gt;
+  &lt;article class="bmc-team-timeline-item"&gt;
+    &lt;div class="bmc-team-timeline-media"&gt;
+      &lt;img src="history.jpg" alt="Historical moment"&gt;
+    &lt;/div&gt;
+    &lt;div class="bmc-team-timeline-content"&gt;
+      &lt;p class="bmc-team-timeline-year"&gt;
+        &lt;span class="bmc-pill bmc-pill-gold bmc-pill-lg"&gt;1954&lt;/span&gt;
+      &lt;/p&gt;
+      &lt;p&gt;Milestone description.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code>
+        <div class="docs-token-grid">
+          <code>.bmc-team-timeline</code><code>.bmc-team-timeline-compact</code><code>.bmc-team-timeline-left</code><code>.bmc-team-timeline-item</code><code>.bmc-team-timeline-media</code><code>.bmc-team-timeline-media-circle</code><code>.bmc-team-timeline-media-hex</code><code>.bmc-team-timeline-media-hex-pointed</code><code>.bmc-team-timeline-content</code><code>.bmc-team-timeline-name</code><code>.bmc-team-timeline-role</code><code>.bmc-team-timeline-year</code><code>.bmc-team-timeline-gallery</code>
+        </div>
+      </section>
+
+      <section class="docs-section" id="typography">
+        <h2>Typography</h2>
+        <p>Semantic headings inside <code>.bmc-v3</code> receive responsive defaults. Visual classes can be used independently of semantic heading level.</p>
+        <div class="docs-example">
+          <span class="docs-example-label">Scale</span>
+          <p class="bmc-display-1 bmc-mb-2">Display 1</p>
+          <p class="bmc-display-2 bmc-mb-2">Display 2</p>
+          <p class="bmc-heading-1 bmc-mb-2">Heading 1</p>
+          <p class="bmc-heading-2 bmc-mb-2">Heading 2</p>
+          <p class="bmc-heading-3 bmc-mb-2">Heading 3</p>
+          <p class="bmc-lead">Lead text introduces important sections.</p>
+          <p>Standard paragraph text uses the framework body rhythm.</p>
+          <p class="bmc-small">Small text.</p>
+          <p class="bmc-xsmall">Extra-small text.</p>
+        </div>
+        <code class="docs-code">&lt;h1 class="bmc-display-1"&gt;Display 1&lt;/h1&gt;
+&lt;h2 class="bmc-heading-1"&gt;Heading 1&lt;/h2&gt;
+&lt;p class="bmc-lead"&gt;Lead text.&lt;/p&gt;
+&lt;p class="bmc-small"&gt;Small text.&lt;/p&gt;</code>
+        <h3>Heading weights and split headings</h3>
+        <div class="docs-example">
+          <p class="bmc-heading-2 bmc-heading-light">Light heading</p>
+          <p class="bmc-heading-2 bmc-heading-regular">Regular heading</p>
+          <p class="bmc-heading-2 bmc-heading-medium">Medium heading</p>
+          <p class="bmc-heading-2 bmc-heading-semibold">Semibold heading</p>
+          <p class="bmc-heading-2 bmc-heading-bold">Bold heading</p>
+          <p class="bmc-heading-2 bmc-heading-split bmc-mb-0">Split <strong>Heading</strong></p>
+        </div>
+        <code class="docs-code">&lt;h2 class="bmc-heading-2 bmc-heading-light"&gt;Light heading&lt;/h2&gt;
+&lt;h2 class="bmc-heading-2 bmc-heading-bold"&gt;Bold heading&lt;/h2&gt;
+&lt;h2 class="bmc-heading-2 bmc-heading-split"&gt;Split &lt;strong&gt;Heading&lt;/strong&gt;&lt;/h2&gt;</code>
+        <div class="docs-token-grid">
+          <code>.bmc-display-1</code><code>.bmc-display-2</code><code>.bmc-heading-1</code><code>.bmc-heading-2</code><code>.bmc-heading-3</code><code>.bmc-heading-light</code><code>.bmc-heading-regular</code><code>.bmc-heading-medium</code><code>.bmc-heading-semibold</code><code>.bmc-heading-bold</code><code>.bmc-heading-split</code><code>.bmc-heading-emphasis</code><code>.bmc-eyebrow</code><code>.bmc-lead</code><code>.bmc-small</code><code>.bmc-xsmall</code><code>.bmc-font-serif</code>
+        </div>
+      </section>
+
+      <section class="docs-section" id="utilities">
+        <h2>Utilities</h2>
+        <p>Utilities follow a Bootstrap-inspired naming pattern and are available only inside the <code>.bmc-v3</code> namespace.</p>
+        <h3>Color and text</h3>
+        <table class="docs-table">
+          <tbody>
+            <tr><th>Text colors</th><td><code>.bmc-text-black</code>, <code>.bmc-text-white</code>, <code>.bmc-text-gold</code>, <code>.bmc-text-muted</code></td></tr>
+            <tr><th>Alignment</th><td><code>.bmc-text-left</code>, <code>.bmc-text-center</code>, <code>.bmc-text-right</code>, <code>.bmc-text-start</code>, <code>.bmc-text-end</code>, plus <code>sm</code>, <code>md</code>, and <code>lg</code> left/center/right variants.</td></tr>
+            <tr><th>Wrapping</th><td><code>.bmc-text-wrap</code>, <code>.bmc-text-nowrap</code>, <code>.bmc-text-balance</code>, <code>.bmc-text-pretty</code></td></tr>
+            <tr><th>Transforms</th><td><code>.bmc-uppercase</code>, <code>.bmc-lowercase</code>, <code>.bmc-capitalize</code>, <code>.bmc-italic</code></td></tr>
+            <tr><th>Weights</th><td><code>.bmc-fw-normal</code>, <code>.bmc-fw-medium</code>, <code>.bmc-fw-semibold</code>, <code>.bmc-fw-bold</code></td></tr>
+          </tbody>
+        </table>
+        <h3>Display and flex</h3>
+        <p>Use <code>.bmc-d-none</code>, <code>.bmc-d-block</code>, <code>.bmc-d-inline</code>, <code>.bmc-d-inline-block</code>, <code>.bmc-d-flex</code>, <code>.bmc-d-inline-flex</code>, and <code>.bmc-d-grid</code>. Responsive display utilities are available for <code>sm</code>, <code>md</code>, and <code>lg</code>: <code>none</code>, <code>block</code>, and <code>flex</code>.</p>
+        <p>Flex helpers include <code>.bmc-flex-row</code>, <code>.bmc-flex-column</code>, <code>.bmc-flex-wrap</code>, <code>.bmc-flex-nowrap</code>, <code>.bmc-justify-start</code>, <code>.bmc-justify-center</code>, <code>.bmc-justify-end</code>, <code>.bmc-justify-between</code>, <code>.bmc-justify-around</code>, <code>.bmc-align-start</code>, <code>.bmc-align-center</code>, <code>.bmc-align-end</code>, and <code>.bmc-align-stretch</code>.</p>
+        <h3>Spacing</h3>
+        <p>Margin and padding use a 0-5 scale: <code>0</code>, <code>.5rem</code>, <code>1rem</code>, <code>1.5rem</code>, <code>2rem</code>, and <code>3rem</code>.</p>
+        <div class="docs-token-grid">
+          <code>.bmc-m-0...5</code><code>.bmc-my-0...5</code><code>.bmc-mt-0...5</code><code>.bmc-mb-0...5</code><code>.bmc-mx-auto</code><code>.bmc-p-0...5</code><code>.bmc-px-1...4</code><code>.bmc-py-1...4</code><code>.bmc-gap-0...5</code>
+        </div>
+        <h3>Sizing, position, overflow, and visibility</h3>
+        <p>Use <code>.bmc-w-25</code>, <code>.bmc-w-50</code>, <code>.bmc-w-75</code>, <code>.bmc-w-100</code>, <code>.bmc-h-100</code>, <code>.bmc-position-relative</code>, <code>.bmc-position-absolute</code>, <code>.bmc-position-fixed</code>, <code>.bmc-overflow-hidden</code>, <code>.bmc-overflow-auto</code>, <code>.bmc-media-cover</code>, and <code>.bmc-visually-hidden</code>.</p>
+        <code class="docs-code">&lt;div class="bmc-d-flex bmc-flex-wrap bmc-gap-2 bmc-align-center"&gt;...&lt;/div&gt;
+&lt;p class="bmc-text-center bmc-text-md-left bmc-text-muted"&gt;Responsive text alignment&lt;/p&gt;
+&lt;div class="bmc-p-4 bmc-mb-3 bmc-w-100"&gt;Spacing and sizing&lt;/div&gt;</code>
+      </section>
+
+      <section class="docs-section" id="class-index">
+        <h2>Class index</h2>
+        <p>This alphabetized index is generated from the current stylesheet and includes components, layout helpers, and utilities.</p>
+        <div class="docs-class-index">
+          <code>.bmc-align-center</code>
+          <code>.bmc-align-end</code>
+          <code>.bmc-align-start</code>
+          <code>.bmc-align-stretch</code>
+          <code>.bmc-btn</code>
+          <code>.bmc-btn-block</code>
+          <code>.bmc-btn-dark</code>
+          <code>.bmc-btn-lg</code>
+          <code>.bmc-btn-light</code>
+          <code>.bmc-btn-outline</code>
+          <code>.bmc-btn-sm</code>
+          <code>.bmc-callout</code>
+          <code>.bmc-capitalize</code>
+          <code>.bmc-card</code>
+          <code>.bmc-card-dark</code>
+          <code>.bmc-card-gold</code>
+          <code>.bmc-card-white</code>
+          <code>.bmc-carousel</code>
+          <code>.bmc-carousel-actions</code>
+          <code>.bmc-carousel-button</code>
+          <code>.bmc-carousel-header</code>
+          <code>.bmc-carousel-meta</code>
+          <code>.bmc-carousel-slide</code>
+          <code>.bmc-carousel-status</code>
+          <code>.bmc-carousel-title</code>
+          <code>.bmc-carousel-track</code>
+          <code>.bmc-carousel-viewport</code>
+          <code>.bmc-col</code>
+          <code>.bmc-col-1</code>
+          <code>.bmc-col-10</code>
+          <code>.bmc-col-11</code>
+          <code>.bmc-col-12</code>
+          <code>.bmc-col-2</code>
+          <code>.bmc-col-3</code>
+          <code>.bmc-col-4</code>
+          <code>.bmc-col-5</code>
+          <code>.bmc-col-6</code>
+          <code>.bmc-col-7</code>
+          <code>.bmc-col-8</code>
+          <code>.bmc-col-9</code>
+          <code>.bmc-col-auto</code>
+          <code>.bmc-col-lg-1</code>
+          <code>.bmc-col-lg-10</code>
+          <code>.bmc-col-lg-11</code>
+          <code>.bmc-col-lg-12</code>
+          <code>.bmc-col-lg-2</code>
+          <code>.bmc-col-lg-3</code>
+          <code>.bmc-col-lg-4</code>
+          <code>.bmc-col-lg-5</code>
+          <code>.bmc-col-lg-6</code>
+          <code>.bmc-col-lg-7</code>
+          <code>.bmc-col-lg-8</code>
+          <code>.bmc-col-lg-9</code>
+          <code>.bmc-col-md-1</code>
+          <code>.bmc-col-md-10</code>
+          <code>.bmc-col-md-11</code>
+          <code>.bmc-col-md-12</code>
+          <code>.bmc-col-md-2</code>
+          <code>.bmc-col-md-3</code>
+          <code>.bmc-col-md-4</code>
+          <code>.bmc-col-md-5</code>
+          <code>.bmc-col-md-6</code>
+          <code>.bmc-col-md-7</code>
+          <code>.bmc-col-md-8</code>
+          <code>.bmc-col-md-9</code>
+          <code>.bmc-col-sm-1</code>
+          <code>.bmc-col-sm-10</code>
+          <code>.bmc-col-sm-11</code>
+          <code>.bmc-col-sm-12</code>
+          <code>.bmc-col-sm-2</code>
+          <code>.bmc-col-sm-3</code>
+          <code>.bmc-col-sm-4</code>
+          <code>.bmc-col-sm-5</code>
+          <code>.bmc-col-sm-6</code>
+          <code>.bmc-col-sm-7</code>
+          <code>.bmc-col-sm-8</code>
+          <code>.bmc-col-sm-9</code>
+          <code>.bmc-container</code>
+          <code>.bmc-container-fluid</code>
+          <code>.bmc-container-narrow</code>
+          <code>.bmc-d-block</code>
+          <code>.bmc-d-flex</code>
+          <code>.bmc-d-grid</code>
+          <code>.bmc-d-inline</code>
+          <code>.bmc-d-inline-block</code>
+          <code>.bmc-d-inline-flex</code>
+          <code>.bmc-d-lg-block</code>
+          <code>.bmc-d-lg-flex</code>
+          <code>.bmc-d-lg-none</code>
+          <code>.bmc-d-md-block</code>
+          <code>.bmc-d-md-flex</code>
+          <code>.bmc-d-md-none</code>
+          <code>.bmc-d-none</code>
+          <code>.bmc-d-sm-block</code>
+          <code>.bmc-d-sm-flex</code>
+          <code>.bmc-d-sm-none</code>
+          <code>.bmc-display-1</code>
+          <code>.bmc-display-2</code>
+          <code>.bmc-divider</code>
+          <code>.bmc-eyebrow</code>
+          <code>.bmc-flex-column</code>
+          <code>.bmc-flex-nowrap</code>
+          <code>.bmc-flex-row</code>
+          <code>.bmc-flex-wrap</code>
+          <code>.bmc-font-serif</code>
+          <code>.bmc-fw-bold</code>
+          <code>.bmc-fw-medium</code>
+          <code>.bmc-fw-normal</code>
+          <code>.bmc-fw-semibold</code>
+          <code>.bmc-g-0</code>
+          <code>.bmc-g-1</code>
+          <code>.bmc-g-2</code>
+          <code>.bmc-g-3</code>
+          <code>.bmc-g-4</code>
+          <code>.bmc-g-5</code>
+          <code>.bmc-gap-0</code>
+          <code>.bmc-gap-1</code>
+          <code>.bmc-gap-2</code>
+          <code>.bmc-gap-3</code>
+          <code>.bmc-gap-4</code>
+          <code>.bmc-gap-5</code>
+          <code>.bmc-grid</code>
+          <code>.bmc-grid-2</code>
+          <code>.bmc-grid-3</code>
+          <code>.bmc-grid-4</code>
+          <code>.bmc-grid-alternate</code>
+          <code>.bmc-grid-alternate-align</code>
+          <code>.bmc-grid-auto</code>
+          <code>.bmc-h-100</code>
+          <code>.bmc-heading-1</code>
+          <code>.bmc-heading-2</code>
+          <code>.bmc-heading-3</code>
+          <code>.bmc-heading-bold</code>
+          <code>.bmc-heading-emphasis</code>
+          <code>.bmc-heading-light</code>
+          <code>.bmc-heading-medium</code>
+          <code>.bmc-heading-regular</code>
+          <code>.bmc-heading-semibold</code>
+          <code>.bmc-heading-split</code>
+          <code>.bmc-hero</code>
+          <code>.bmc-hero-content</code>
+          <code>.bmc-hero-media</code>
+          <code>.bmc-hero-overlay</code>
+          <code>.bmc-hex</code>
+          <code>.bmc-hex-content</code>
+          <code>.bmc-hex-dark</code>
+          <code>.bmc-hex-label</code>
+          <code>.bmc-hex-lg</code>
+          <code>.bmc-hex-light</code>
+          <code>.bmc-hex-outline</code>
+          <code>.bmc-hex-pointed</code>
+          <code>.bmc-hex-sm</code>
+          <code>.bmc-hex-value</code>
+          <code>.bmc-image-card</code>
+          <code>.bmc-image-card-body</code>
+          <code>.bmc-image-card-caption</code>
+          <code>.bmc-image-card-landscape</code>
+          <code>.bmc-image-card-media</code>
+          <code>.bmc-image-card-media-cover</code>
+          <code>.bmc-image-card-media-landscape</code>
+          <code>.bmc-image-card-media-portrait</code>
+          <code>.bmc-image-card-media-square</code>
+          <code>.bmc-image-card-square</code>
+          <code>.bmc-image-circle</code>
+          <code>.bmc-image-current</code>
+          <code>.bmc-image-hex</code>
+          <code>.bmc-image-hex-pointed</code>
+          <code>.bmc-image-shape</code>
+          <code>.bmc-image-shape-fluid</code>
+          <code>.bmc-image-shape-lg</code>
+          <code>.bmc-image-shape-sm</code>
+          <code>.bmc-italic</code>
+          <code>.bmc-justify-around</code>
+          <code>.bmc-justify-between</code>
+          <code>.bmc-justify-center</code>
+          <code>.bmc-justify-end</code>
+          <code>.bmc-justify-start</code>
+          <code>.bmc-lead</code>
+          <code>.bmc-legacy-card</code>
+          <code>.bmc-legacy-card-landscape</code>
+          <code>.bmc-legacy-card-square</code>
+          <code>.bmc-list-check</code>
+          <code>.bmc-list-inline</code>
+          <code>.bmc-list-unstyled</code>
+          <code>.bmc-lowercase</code>
+          <code>.bmc-m-0</code>
+          <code>.bmc-m-1</code>
+          <code>.bmc-m-2</code>
+          <code>.bmc-m-3</code>
+          <code>.bmc-m-4</code>
+          <code>.bmc-m-5</code>
+          <code>.bmc-mb-0</code>
+          <code>.bmc-mb-1</code>
+          <code>.bmc-mb-2</code>
+          <code>.bmc-mb-3</code>
+          <code>.bmc-mb-4</code>
+          <code>.bmc-mb-5</code>
+          <code>.bmc-media-cover</code>
+          <code>.bmc-mt-0</code>
+          <code>.bmc-mt-1</code>
+          <code>.bmc-mt-2</code>
+          <code>.bmc-mt-3</code>
+          <code>.bmc-mt-4</code>
+          <code>.bmc-mt-5</code>
+          <code>.bmc-mx-auto</code>
+          <code>.bmc-my-0</code>
+          <code>.bmc-my-1</code>
+          <code>.bmc-my-2</code>
+          <code>.bmc-my-3</code>
+          <code>.bmc-my-4</code>
+          <code>.bmc-my-5</code>
+          <code>.bmc-overflow-auto</code>
+          <code>.bmc-overflow-hidden</code>
+          <code>.bmc-p-0</code>
+          <code>.bmc-p-1</code>
+          <code>.bmc-p-2</code>
+          <code>.bmc-p-3</code>
+          <code>.bmc-p-4</code>
+          <code>.bmc-p-5</code>
+          <code>.bmc-pill</code>
+          <code>.bmc-pill-dark</code>
+          <code>.bmc-pill-gold</code>
+          <code>.bmc-pill-lg</code>
+          <code>.bmc-pill-outline</code>
+          <code>.bmc-pill-sm</code>
+          <code>.bmc-position-absolute</code>
+          <code>.bmc-position-fixed</code>
+          <code>.bmc-position-relative</code>
+          <code>.bmc-px-1</code>
+          <code>.bmc-px-2</code>
+          <code>.bmc-px-3</code>
+          <code>.bmc-px-4</code>
+          <code>.bmc-py-1</code>
+          <code>.bmc-py-2</code>
+          <code>.bmc-py-3</code>
+          <code>.bmc-py-4</code>
+          <code>.bmc-quote</code>
+          <code>.bmc-ratio</code>
+          <code>.bmc-ratio-16x9</code>
+          <code>.bmc-ratio-1x1</code>
+          <code>.bmc-ratio-3x4</code>
+          <code>.bmc-ratio-4x3</code>
+          <code>.bmc-row</code>
+          <code>.bmc-section</code>
+          <code>.bmc-section-dark</code>
+          <code>.bmc-section-gold</code>
+          <code>.bmc-section-light</code>
+          <code>.bmc-section-sm</code>
+          <code>.bmc-small</code>
+          <code>.bmc-stat</code>
+          <code>.bmc-stat-label</code>
+          <code>.bmc-stat-value</code>
+          <code>.bmc-table</code>
+          <code>.bmc-table-borderless</code>
+          <code>.bmc-table-striped</code>
+          <code>.bmc-table-wrap</code>
+          <code>.bmc-team-timeline</code>
+          <code>.bmc-team-timeline-compact</code>
+          <code>.bmc-team-timeline-content</code>
+          <code>.bmc-team-timeline-gallery</code>
+          <code>.bmc-team-timeline-item</code>
+          <code>.bmc-team-timeline-left</code>
+          <code>.bmc-team-timeline-media</code>
+          <code>.bmc-team-timeline-media-circle</code>
+          <code>.bmc-team-timeline-media-hex</code>
+          <code>.bmc-team-timeline-media-hex-pointed</code>
+          <code>.bmc-team-timeline-name</code>
+          <code>.bmc-team-timeline-role</code>
+          <code>.bmc-team-timeline-year</code>
+          <code>.bmc-text-balance</code>
+          <code>.bmc-text-black</code>
+          <code>.bmc-text-center</code>
+          <code>.bmc-text-end</code>
+          <code>.bmc-text-gold</code>
+          <code>.bmc-text-left</code>
+          <code>.bmc-text-lg-center</code>
+          <code>.bmc-text-lg-left</code>
+          <code>.bmc-text-lg-right</code>
+          <code>.bmc-text-md-center</code>
+          <code>.bmc-text-md-left</code>
+          <code>.bmc-text-md-right</code>
+          <code>.bmc-text-muted</code>
+          <code>.bmc-text-nowrap</code>
+          <code>.bmc-text-pretty</code>
+          <code>.bmc-text-right</code>
+          <code>.bmc-text-sm-center</code>
+          <code>.bmc-text-sm-left</code>
+          <code>.bmc-text-sm-right</code>
+          <code>.bmc-text-start</code>
+          <code>.bmc-text-white</code>
+          <code>.bmc-text-wrap</code>
+          <code>.bmc-uppercase</code>
+          <code>.bmc-v3</code>
+          <code>.bmc-v3-bio</code>
+          <code>.bmc-v3-bio--compact</code>
+          <code>.bmc-v3-bio--reverse</code>
+          <code>.bmc-v3-bio--stacked</code>
+          <code>.bmc-v3-bio__actions</code>
+          <code>.bmc-v3-bio__content</code>
+          <code>.bmc-v3-bio__description</code>
+          <code>.bmc-v3-bio__eyebrow</code>
+          <code>.bmc-v3-bio__media</code>
+          <code>.bmc-v3-bio__name</code>
+          <code>.bmc-v3-bio__role</code>
+          <code>.bmc-v3-editorial-intro</code>
+          <code>.bmc-v3-editorial-intro--center</code>
+          <code>.bmc-v3-editorial-intro--compact</code>
+          <code>.bmc-v3-editorial-intro--right</code>
+          <code>.bmc-v3-editorial-intro__eyebrow</code>
+          <code>.bmc-v3-editorial-intro__lead</code>
+          <code>.bmc-v3-editorial-intro__title</code>
+          <code>.bmc-v3-eyebrow</code>
+          <code>.bmc-v3-image-frame</code>
+          <code>.bmc-v3-image-frame--dark</code>
+          <code>.bmc-v3-image-frame--interactive</code>
+          <code>.bmc-v3-image-frame--large</code>
+          <code>.bmc-v3-image-frame--reverse</code>
+          <code>.bmc-v3-image-frame--small</code>
+          <code>.bmc-v3-pullquote</code>
+          <code>.bmc-v3-pullquote--center</code>
+          <code>.bmc-v3-pullquote--compact</code>
+          <code>.bmc-v3-pullquote--dark</code>
+          <code>.bmc-v3-stat</code>
+          <code>.bmc-v3-stat__label</code>
+          <code>.bmc-v3-stat__value</code>
+          <code>.bmc-v3-stats</code>
+          <code>.bmc-v3-stats--bordered</code>
+          <code>.bmc-v3-stats--center</code>
+          <code>.bmc-v3-stats--dark</code>
+          <code>.bmc-v3-story-divider</code>
+          <code>.bmc-v3-story-divider--center</code>
+          <code>.bmc-v3-story-divider--dark</code>
+          <code>.bmc-v3-story-divider--short</code>
+          <code>.bmc-v3-story-header</code>
+          <code>.bmc-v3-story-header--center</code>
+          <code>.bmc-v3-story-header__eyebrow</code>
+          <code>.bmc-v3-story-header__lead</code>
+          <code>.bmc-v3-story-header__meta</code>
+          <code>.bmc-v3-story-header__title</code>
+          <code>.bmc-visually-hidden</code>
+          <code>.bmc-w-100</code>
+          <code>.bmc-w-25</code>
+          <code>.bmc-w-50</code>
+          <code>.bmc-w-75</code>
+          <code>.bmc-xsmall</code>
+        </div>
+      </section>
+    </main>
+
+    <aside class="docs-on-this-page" aria-label="On this page">
+      <h2>On this page</h2>
+      <ol class="docs-page-list">
+        <li><a href="#quick-start">Quick start</a></li>
+        <li><a href="#buttons">Buttons</a></li>
+        <li><a href="#callouts">Callouts</a></li>
+        <li><a href="#cards">Cards</a></li>
+        <li><a href="#carousel">Carousel</a></li>
+        <li><a href="#containers">Containers</a></li>
+        <li><a href="#dividers">Dividers</a></li>
+        <li><a href="#editorial-storytelling">Editorial</a></li>
+        <li><a href="#grid">Grid</a></li>
+        <li><a href="#hero">Hero</a></li>
+        <li><a href="#hexagons">Hexagons</a></li>
+        <li><a href="#image-cards">Image cards</a></li>
+        <li><a href="#image-shapes">Image shapes</a></li>
+        <li><a href="#legacy-cards">Legacy cards</a></li>
+        <li><a href="#lists">Lists</a></li>
+        <li><a href="#pills">Pills</a></li>
+        <li><a href="#quotes">Quotes</a></li>
+        <li><a href="#ratios">Ratios</a></li>
+        <li><a href="#sections">Sections</a></li>
+        <li><a href="#stats">Stats</a></li>
+        <li><a href="#tables">Tables</a></li>
+        <li><a href="#team-timeline">Team timeline</a></li>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#utilities">Utilities</a></li>
+        <li><a href="#class-index">Class index</a></li>
+      </ol>
+    </aside>
+  </div>
+</div>
+</body>
+</html>
