@@ -66,14 +66,13 @@
 
     .docs-layout {
       display: grid;
-      grid-template-columns: minmax(220px, 280px) minmax(0, 1fr) minmax(180px, 240px);
+      grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
       gap: clamp(1.5rem, 3vw, 3rem);
-      width: min(100% - 2rem, 1480px);
+      width: min(100% - 2rem, 1240px);
       margin-inline: auto;
     }
 
-    .docs-sidebar,
-    .docs-on-this-page {
+    .docs-sidebar {
       position: sticky;
       top: 88px;
       max-height: calc(100svh - 108px);
@@ -81,8 +80,7 @@
       padding-block: 2rem;
     }
 
-    .docs-sidebar h2,
-    .docs-on-this-page h2 {
+    .docs-sidebar h2 {
       margin: 0 0 .75rem;
       color: #5f5b5c;
       font-size: .75rem;
@@ -90,8 +88,7 @@
       text-transform: uppercase;
     }
 
-    .docs-nav-list,
-    .docs-page-list {
+    .docs-nav-list {
       display: grid;
       gap: .1rem;
       margin: 0;
@@ -99,8 +96,7 @@
       list-style: none;
     }
 
-    .docs-nav-list a,
-    .docs-page-list a {
+    .docs-nav-list a {
       display: block;
       padding: .35rem 0;
       color: #5f5b5c;
@@ -110,9 +106,7 @@
     }
 
     .docs-nav-list a:hover,
-    .docs-page-list a:hover,
-    .docs-nav-list a:focus-visible,
-    .docs-page-list a:focus-visible {
+    .docs-nav-list a:focus-visible {
       color: #242122;
       text-decoration: underline;
       text-decoration-color: #ddb75f;
@@ -309,10 +303,6 @@
     @media (max-width: 1180px) {
       .docs-layout {
         grid-template-columns: minmax(200px, 250px) minmax(0, 1fr);
-      }
-
-      .docs-on-this-page {
-        display: none;
       }
     }
 
@@ -1632,36 +1622,6 @@
       </section>
     </main>
 
-    <aside class="docs-on-this-page" aria-label="On this page">
-      <h2>On this page</h2>
-      <ol class="docs-page-list">
-        <li><a href="#quick-start">Quick start</a></li>
-        <li><a href="#buttons">Buttons</a></li>
-        <li><a href="#callouts">Callouts</a></li>
-        <li><a href="#cards">Cards</a></li>
-        <li><a href="#carousel">Carousel</a></li>
-        <li><a href="#containers">Containers</a></li>
-        <li><a href="#dividers">Dividers</a></li>
-        <li><a href="#editorial-storytelling">Editorial</a></li>
-        <li><a href="#grid">Grid</a></li>
-        <li><a href="#hero">Hero</a></li>
-        <li><a href="#hexagons">Hexagons</a></li>
-        <li><a href="#image-cards">Image cards</a></li>
-        <li><a href="#image-shapes">Image shapes</a></li>
-        <li><a href="#legacy-cards">Legacy cards</a></li>
-        <li><a href="#lists">Lists</a></li>
-        <li><a href="#pills">Pills</a></li>
-        <li><a href="#quotes">Quotes</a></li>
-        <li><a href="#ratios">Ratios</a></li>
-        <li><a href="#sections">Sections</a></li>
-        <li><a href="#stats">Stats</a></li>
-        <li><a href="#tables">Tables</a></li>
-        <li><a href="#team-timeline">Team timeline</a></li>
-        <li><a href="#typography">Typography</a></li>
-        <li><a href="#utilities">Utilities</a></li>
-        <li><a href="#class-index">Class index</a></li>
-      </ol>
-    </aside>
   </div>
 </div>
 </body>
