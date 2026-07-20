@@ -374,17 +374,23 @@
    ---------------------------------------------------------- */
 .bmc-v3 a.bmc-btn,
 .bmc-v3 button.bmc-btn {
+  --bmc-v3-btn-font-size: 1rem;
+  --bmc-v3-btn-min-height: 48px;
+  --bmc-v3-btn-padding-block: .85rem;
+  --bmc-v3-btn-padding-inline: 1.4rem;
+
   -webkit-appearance: none;
   appearance: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 48px;
-  padding: .85rem 1.4rem;
+  min-height: var(--bmc-v3-btn-min-height);
+  padding: var(--bmc-v3-btn-padding-block) var(--bmc-v3-btn-padding-inline);
   border: 2px solid var(--bmc-v3-gold);
   background: var(--bmc-v3-gold);
   color: #000 !important;
   font: inherit;
+  font-size: var(--bmc-v3-btn-font-size);
   font-weight: 800;
   line-height: 1.15;
   text-align: center;
@@ -429,8 +435,22 @@
   color: var(--bmc-v3-black) !important;
 }
 
-.bmc-v3 .bmc-btn-sm { min-height: 40px; padding: .6rem 1rem; font-size: .9rem; }
-.bmc-v3 .bmc-btn-lg { min-height: 58px; padding: 1rem 1.75rem; font-size: 1.1rem; }
+.bmc-v3 a.bmc-btn.bmc-btn-sm,
+.bmc-v3 button.bmc-btn.bmc-btn-sm {
+  --bmc-v3-btn-font-size: .9rem;
+  --bmc-v3-btn-min-height: 40px;
+  --bmc-v3-btn-padding-block: .6rem;
+  --bmc-v3-btn-padding-inline: 1rem;
+}
+
+.bmc-v3 a.bmc-btn.bmc-btn-lg,
+.bmc-v3 button.bmc-btn.bmc-btn-lg {
+  --bmc-v3-btn-font-size: 1.1rem;
+  --bmc-v3-btn-min-height: 58px;
+  --bmc-v3-btn-padding-block: 1rem;
+  --bmc-v3-btn-padding-inline: 1.75rem;
+}
+
 .bmc-v3 .bmc-btn-block { width: 100%; }
 
 /* ----------------------------------------------------------
@@ -590,16 +610,21 @@
    Pills and Badges
    ---------------------------------------------------------- */
 .bmc-v3 .bmc-pill {
+  --bmc-v3-pill-font-size: .75rem;
+  --bmc-v3-pill-min-height: 32px;
+  --bmc-v3-pill-padding-block: .42rem;
+  --bmc-v3-pill-padding-inline: .8rem;
+
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 32px;
-  padding: .42rem .8rem;
+  min-height: var(--bmc-v3-pill-min-height);
+  padding: var(--bmc-v3-pill-padding-block) var(--bmc-v3-pill-padding-inline);
   border: 1px solid var(--bmc-v3-gray-300);
   border-radius: 0;
   background: var(--bmc-v3-white);
   color: var(--bmc-v3-black);
-  font-size: .75rem;
+  font-size: var(--bmc-v3-pill-font-size);
   font-weight: 800;
   line-height: 1;
   letter-spacing: .08em;
@@ -625,15 +650,17 @@
 }
 
 .bmc-v3 .bmc-pill-sm {
-  min-height: 26px;
-  padding: .32rem .65rem;
-  font-size: .68rem;
+  --bmc-v3-pill-font-size: .68rem;
+  --bmc-v3-pill-min-height: 26px;
+  --bmc-v3-pill-padding-block: .32rem;
+  --bmc-v3-pill-padding-inline: .65rem;
 }
 
 .bmc-v3 .bmc-pill-lg {
-  min-height: 46px;
-  padding: 0.7rem 1.25rem;
-  font-size: 1rem;
+  --bmc-v3-pill-font-size: 1rem;
+  --bmc-v3-pill-min-height: 46px;
+  --bmc-v3-pill-padding-block: .7rem;
+  --bmc-v3-pill-padding-inline: 1.25rem;
 }
 
 /* ----------------------------------------------------------

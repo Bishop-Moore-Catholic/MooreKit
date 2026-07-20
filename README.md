@@ -82,9 +82,17 @@ Use MooreKit's namespaced `.bmc-btn` class by itself. Do not add the website's g
 <a class="bmc-btn bmc-btn-outline" href="#">
   Outline
 </a>
+
+<a class="bmc-btn bmc-btn-sm" href="#">
+  Small
+</a>
+
+<a class="bmc-btn bmc-btn-lg" href="#">
+  Large
+</a>
 ```
 
-The dark displays white text on black by default and changes to black text on gold when hovered or focused.
+The `bmc-btn-sm` and `bmc-btn-lg` size modifiers change the button's min-height, padding, and text size. The dark displays white text on black by default and changes to black text on gold when hovered or focused.
 
 ## Responsive Grid
 
