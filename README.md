@@ -128,6 +128,7 @@ The framework includes reusable components for:
 - Responsive videos
 - Image and legacy cards
 - Image-card carousels
+- Editorial and storytelling components
 - Tables
 - Heroes
 - Section headings
@@ -189,6 +190,39 @@ For dynamically inserted carousel markup, run:
 ```js
 window.MooreKit.initCarousels(containerElement);
 ```
+
+### Editorial and storytelling components
+
+Use the `bmc-v3-*` editorial components for alumni profiles, honoree features, campaign stories, admissions stories, development pages, news features, and faculty or student profiles. These components work independently and do not require JavaScript.
+
+Available components include:
+
+- `bmc-v3-eyebrow`
+- `bmc-v3-image-frame`
+- `bmc-v3-editorial-intro`
+- `bmc-v3-story-header`
+- `bmc-v3-pullquote`
+- `bmc-v3-bio`
+- `bmc-v3-stats` and `bmc-v3-stat`
+- `bmc-v3-story-divider`
+
+Example:
+
+```html
+<header class="bmc-v3-story-header">
+  <p class="bmc-v3-story-header__eyebrow">Alumni Spotlight</p>
+  <h1 class="bmc-v3-story-header__title">A Meaningful Story Title</h1>
+  <p class="bmc-v3-story-header__lead">
+    A concise introduction that summarizes the feature.
+  </p>
+  <div class="bmc-v3-story-header__meta">
+    <span>By Bishop Moore Catholic</span>
+    <time datetime="2026-07-20">July 20, 2026</time>
+  </div>
+</header>
+```
+
+Open `usage.html#editorial-storytelling` for copy-and-paste examples, modifiers, responsive behavior, and accessibility guidance.
 
 
 ### Team timeline
