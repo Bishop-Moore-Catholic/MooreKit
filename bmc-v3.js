@@ -98,7 +98,6 @@
 
       track.insertBefore(before, track.firstChild);
       track.appendChild(after);
-      root.classList.add("bmc-carousel-looping");
       physicalSlides = Array.prototype.slice.call(
         track.querySelectorAll("[data-bmc-carousel-slide]")
       );

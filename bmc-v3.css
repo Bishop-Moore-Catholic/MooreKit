@@ -24,6 +24,10 @@
   --bmc-v3-container-narrow: 850px;
   --bmc-v3-gutter: clamp(1rem, 3vw, 2rem);
   --bmc-v3-section-space: clamp(3rem, 8vw, 7rem);
+  --bmc-v3-hex-flat-ratio: 2 / 1.7320508076;
+  --bmc-v3-hex-pointed-ratio: 1.7320508076 / 2;
+  --bmc-v3-hex-flat-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+  --bmc-v3-hex-pointed-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
 
   color: var(--bmc-v3-black);
   font-family: var(--bmc-v3-font-sans);
@@ -169,10 +173,15 @@
 
 .bmc-v3 .bmc-small { font-size: .875rem; }
 .bmc-v3 .bmc-xsmall { font-size: .75rem; }
-.bmc-v3 .bmc-fw-normal { font-weight: 400 !important; }
-.bmc-v3 .bmc-fw-medium { font-weight: 500 !important; }
-.bmc-v3 .bmc-fw-semibold { font-weight: 650 !important; }
-.bmc-v3 .bmc-fw-bold { font-weight: 800 !important; }
+.bmc-v3 .bmc-heading-light { font-weight: 300 !important; }
+.bmc-v3 .bmc-fw-normal,
+.bmc-v3 .bmc-heading-regular { font-weight: 400 !important; }
+.bmc-v3 .bmc-fw-medium,
+.bmc-v3 .bmc-heading-medium { font-weight: 500 !important; }
+.bmc-v3 .bmc-fw-semibold,
+.bmc-v3 .bmc-heading-semibold { font-weight: 650 !important; }
+.bmc-v3 .bmc-fw-bold,
+.bmc-v3 .bmc-heading-bold { font-weight: 800 !important; }
 .bmc-v3 .bmc-italic { font-style: italic !important; }
 .bmc-v3 .bmc-uppercase { text-transform: uppercase !important; }
 .bmc-v3 .bmc-lowercase { text-transform: lowercase !important; }
@@ -535,13 +544,13 @@
   --bmc-v3-hex-bg: var(--bmc-v3-gold);
   --bmc-v3-hex-color: var(--bmc-v3-black);
   width: var(--bmc-v3-hex-width);
-  aspect-ratio: 2 / 1.7320508076;
+  aspect-ratio: var(--bmc-v3-hex-flat-ratio);
   display: grid;
   place-items: center;
   padding-inline: calc(var(--bmc-v3-hex-width) * .15);
   background: var(--bmc-v3-hex-bg);
   color: var(--bmc-v3-hex-color);
-  clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+  clip-path: var(--bmc-v3-hex-flat-path);
   text-align: center;
   overflow: hidden;
 }
@@ -549,10 +558,10 @@
 
 /* Point-up / point-down regular hexagon. Add alongside bmc-hex. */
 .bmc-v3 .bmc-hex-pointed {
-  aspect-ratio: 1.7320508076 / 2;
+  aspect-ratio: var(--bmc-v3-hex-pointed-ratio);
   padding-inline: calc(var(--bmc-v3-hex-width) * .10);
   padding-block: calc(var(--bmc-v3-hex-width) * .16);
-  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+  clip-path: var(--bmc-v3-hex-pointed-path);
 }
 
 .bmc-v3 .bmc-hex-content {
@@ -664,14 +673,8 @@
 }
 
 /* ----------------------------------------------------------
-   Editorial Heading Weights
+   Editorial Heading Split
    ---------------------------------------------------------- */
-.bmc-v3 .bmc-heading-light { font-weight: 300 !important; }
-.bmc-v3 .bmc-heading-regular { font-weight: 400 !important; }
-.bmc-v3 .bmc-heading-medium { font-weight: 500 !important; }
-.bmc-v3 .bmc-heading-semibold { font-weight: 650 !important; }
-.bmc-v3 .bmc-heading-bold { font-weight: 800 !important; }
-
 .bmc-v3 .bmc-heading-split {
   font-weight: 300 !important;
 }
@@ -1415,16 +1418,25 @@
   object-position: center;
 }
 
-.bmc-v3 .bmc-image-circle { border-radius: 50% !important; }
-
-.bmc-v3 .bmc-image-hex {
-  aspect-ratio: 2 / 1.7320508076;
-  clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+.bmc-v3 .bmc-image-circle,
+.bmc-v3 .bmc-team-timeline-media-circle,
+.bmc-v3 .bmc-team-timeline-media.bmc-image-circle {
+  aspect-ratio: 1;
+  border-radius: 50% !important;
 }
 
-.bmc-v3 .bmc-image-hex-pointed {
-  aspect-ratio: 1.7320508076 / 2;
-  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+.bmc-v3 .bmc-image-hex,
+.bmc-v3 .bmc-team-timeline-media-hex,
+.bmc-v3 .bmc-team-timeline-media.bmc-image-hex {
+  aspect-ratio: var(--bmc-v3-hex-flat-ratio);
+  clip-path: var(--bmc-v3-hex-flat-path);
+}
+
+.bmc-v3 .bmc-image-hex-pointed,
+.bmc-v3 .bmc-team-timeline-media-hex-pointed,
+.bmc-v3 .bmc-team-timeline-media.bmc-image-hex-pointed {
+  aspect-ratio: var(--bmc-v3-hex-pointed-ratio);
+  clip-path: var(--bmc-v3-hex-pointed-path);
 }
 
 .bmc-v3 .bmc-image-shape-sm { --bmc-v3-image-shape-size: 96px; }
@@ -1512,31 +1524,6 @@
   height: 100%;
   object-fit: cover;
   object-position: center top;
-}
-
-/* Backward-compatible timeline shape aliases. New work can use bmc-image-* utilities. */
-.bmc-v3 .bmc-team-timeline-media-circle {
-  aspect-ratio: 1;
-  border-radius: 50% !important;
-}
-.bmc-v3 .bmc-team-timeline-media-hex {
-  aspect-ratio: 2 / 1.7320508076;
-  clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
-}
-.bmc-v3 .bmc-team-timeline-media-hex-pointed {
-  aspect-ratio: 1.7320508076 / 2;
-  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
-}
-
-/* Ensure global image-shape geometry wins inside layout components. */
-.bmc-v3 .bmc-team-timeline-media.bmc-image-circle {
-  aspect-ratio: 1;
-}
-.bmc-v3 .bmc-team-timeline-media.bmc-image-hex {
-  aspect-ratio: 2 / 1.7320508076;
-}
-.bmc-v3 .bmc-team-timeline-media.bmc-image-hex-pointed {
-  aspect-ratio: 1.7320508076 / 2;
 }
 
 .bmc-v3 .bmc-team-timeline-content {
