@@ -4,6 +4,9 @@
    Purpose: Lightweight, scoped layout and component utilities
    ========================================================== */
 
+/* Bishop Moore Catholic brand font kit. Keep this before all style rules. */
+@import url("https://use.typekit.net/ymt8xmp.css");
+
 .bmc-v3 {
   --bmc-v3-black: #242122;
   --bmc-v3-gray-900: #333132;
@@ -17,7 +20,7 @@
   --bmc-v3-danger: #b42318;
   --bmc-v3-success: #1f7a45;
 
-  --bmc-v3-font-sans: "Futura PT", "Avenir Next", Avenir, Montserrat, Arial, sans-serif;
+  --bmc-v3-font-sans: "futura-pt", "Futura PT", "Avenir Next", Avenir, Montserrat, Arial, sans-serif;
   --bmc-v3-font-serif: "Adobe Caslon Pro", Georgia, serif;
 
   --bmc-v3-container: 1200px;
