@@ -386,6 +386,9 @@
         <div class="docs-callout">
           <strong>Namespace rule:</strong> every framework selector is scoped under <code>.bmc-v3</code>. Add that wrapper once around the content you want MooreKit to style.
         </div>
+        <div class="docs-callout">
+          <strong>Standalone:</strong> MooreKit does not require the site-wide BMC-CSS stylesheet. It loads the Bishop Moore Catholic Adobe Fonts kit itself and provides scoped fallbacks and foundations. BMC-CSS may still be loaded by CMS pages for site-shell corrections.
+        </div>
       </section>
 
       <section class="docs-section" id="quick-start">
@@ -422,6 +425,7 @@
             <tr><td><code>bmc-v3.min.css</code></td><td>Minified production stylesheet.</td></tr>
             <tr><td><code>bmc-v3.js</code></td><td>Optional dependency-free carousel initializer for <code>[data-bmc-carousel]</code>.</td></tr>
             <tr><td><code>docs/index.html</code></td><td>This Bootstrap-style usage guide and class reference.</td></tr>
+            <tr><td><code>docs/bmc-css-independence.md</code></td><td>Upstream BMC-CSS audit and the boundary between portable foundations and CMS corrections.</td></tr>
           </tbody>
         </table>
       </section>

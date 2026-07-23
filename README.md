@@ -4,6 +4,14 @@ A lightweight, reusable CSS component and utility framework for Bishop Moore Cat
 
 The framework is scoped beneath the `.bmc-v3` namespace so it can be added to existing pages without unintentionally changing unrelated site elements.
 
+## Relationship to BMC-CSS
+
+MooreKit was originally designed for pages that also loaded [`BMC-CSS`](https://github.com/Bishop-Moore-Catholic/BMC-CSS), the site-wide correction stylesheet for the Bishop Moore Catholic CMS. BMC-CSS supplies the Adobe Fonts kit and also contains global typography rules, navigation fixes, editor-content corrections, and CMS-specific responsive patches.
+
+MooreKit now includes the portable foundation it needs—brand font loading, fallback font stacks, scoped typography, responsive media defaults, layout primitives, controls, and accessibility behavior—so **BMC-CSS is not required for MooreKit components**. Existing CMS pages may continue to load BMC-CSS for its site-shell and CMS corrections.
+
+The Adobe Fonts kit is loaded by `bmc-v3.css` from `use.typekit.net`. If that network resource is unavailable, MooreKit uses its documented system fallback stack. See [`docs/bmc-css-independence.md`](docs/bmc-css-independence.md) for the upstream audit and boundary.
+
 ## Included Files
 
 | File | Purpose |
@@ -16,6 +24,7 @@ The framework is scoped beneath the `.bmc-v3` namespace so it can be added to ex
 | `docs/examples.html` | Visual boilerplate and component gallery |
 | `docs/team-timeline.html` | Team timeline example |
 | `docs/left-timeline.html` | Left timeline example |
+| `docs/bmc-css-independence.md` | BMC-CSS dependency audit and standalone boundary |
 | `assets/images/` | Local demonstration images used by the boilerplate |
 
 ## Quick Start
