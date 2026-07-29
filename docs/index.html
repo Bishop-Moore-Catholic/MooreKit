@@ -767,6 +767,99 @@
           <code>.bmc-v3-pullquote</code><code>.bmc-v3-pullquote--center</code><code>.bmc-v3-pullquote--dark</code><code>.bmc-v3-pullquote--compact</code>
         </div>
 
+        <h3>Split hero and alternating sections</h3>
+        <p>The split hero opens a bold editorial landing page. Follow it with <code>.bmc-v3-split-list--alternate</code> to reverse the media and copy in every other section at 992px and wider. Source order stays media-first, and every section stacks media above copy on smaller screens.</p>
+        <div class="docs-example">
+          <header class="bmc-v3-split-hero">
+              <div class="bmc-v3-split-hero__copy">
+                <h3 class="bmc-v3-split-hero__title">Programs of <strong>Distinction</strong></h3>
+                <p class="bmc-v3-split-hero__lead">Introduce a collection of programs, campaign priorities, or signature experiences with a strong text-and-mark composition.</p>
+              </div>
+              <figure class="bmc-v3-split-hero__mark">
+                <img src="../assets/images/team/tanya-starrett.jpg" alt="Sample portrait representing the featured collection">
+              </figure>
+            </div>
+          </header>
+          <div class="bmc-v3-split-list bmc-v3-split-list--alternate">
+            <section class="bmc-v3-split">
+              <div class="bmc-container bmc-v3-split__inner">
+                <figure class="bmc-v3-split__media">
+                  <img src="../assets/images/legacy-science-current.jpg" alt="Students collaborating in a science lab">
+                </figure>
+                <div class="bmc-v3-split__content">
+                  <h3 class="bmc-v3-split__title">Science</h3>
+                  <p class="bmc-v3-split__lead">Use the default media stage for photography that may crop to fill the square composition.</p>
+                  <p class="bmc-v3-supporter">Supported by <a class="bmc-v3-supporter__link" href="#">Community Partner</a></p>
+                  <div class="bmc-v3-split__group">
+                    <h4 class="bmc-v3-split__label">Highlights</h4>
+                    <ul class="bmc-list-check bmc-list-columns-2">
+                      <li>Applied learning</li>
+                      <li>Professional mentorship</li>
+                      <li>Portfolio development</li>
+                      <li>Capstone experience</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </section>
+            <section class="bmc-v3-split">
+              <div class="bmc-container bmc-v3-split__inner">
+                <figure class="bmc-v3-split__media bmc-v3-split__media--contain">
+                  <img src="../assets/images/legacy-football-historic.png" alt="Historic athletics artwork shown without cropping">
+                </figure>
+                <div class="bmc-v3-split__content">
+                  <h3 class="bmc-v3-split__title">Legacy</h3>
+                  <p class="bmc-v3-split__lead">Use the contain modifier for logos, marks, and other artwork that must remain fully visible on a white stage.</p>
+                </div>
+              </div>
+            </section>
+          </div>
+          <section class="bmc-v3-cta-band">
+            <div class="bmc-container">
+              <a class="bmc-btn bmc-btn-lg" href="#">Explore the Programs</a>
+            </div>
+          </section>
+        </div>
+        <code class="docs-code">&lt;header class="bmc-v3-split-hero"&gt;
+  &lt;div class="bmc-container bmc-v3-split-hero__inner"&gt;
+    &lt;div class="bmc-v3-split-hero__copy"&gt;
+      &lt;h1 class="bmc-v3-split-hero__title"&gt;Programs of &lt;strong&gt;Distinction&lt;/strong&gt;&lt;/h1&gt;
+      &lt;p class="bmc-v3-split-hero__lead"&gt;Introductory copy.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;figure class="bmc-v3-split-hero__mark"&gt;
+      &lt;img src="program-mark.png" alt="Programs of Distinction"&gt;
+    &lt;/figure&gt;
+  &lt;/div&gt;
+&lt;/header&gt;
+
+&lt;div class="bmc-v3-split-list bmc-v3-split-list--alternate"&gt;
+  &lt;section class="bmc-v3-split"&gt;
+    &lt;div class="bmc-container bmc-v3-split__inner"&gt;
+      &lt;figure class="bmc-v3-split__media bmc-v3-split__media--contain"&gt;
+        &lt;img src="program-logo.png" alt="Program name logo"&gt;
+      &lt;/figure&gt;
+      &lt;div class="bmc-v3-split__content"&gt;
+        &lt;h2 class="bmc-v3-split__title"&gt;Program Name&lt;/h2&gt;
+        &lt;p class="bmc-v3-split__lead"&gt;Program description.&lt;/p&gt;
+        &lt;p class="bmc-v3-supporter"&gt;Supported by Donor Name&lt;/p&gt;
+        &lt;div class="bmc-v3-split__group"&gt;
+          &lt;h3 class="bmc-v3-split__label"&gt;Classes&lt;/h3&gt;
+          &lt;ul class="bmc-list-check bmc-list-columns-2"&gt;...&lt;/ul&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/section&gt;
+&lt;/div&gt;
+
+&lt;section class="bmc-v3-cta-band"&gt;
+  &lt;div class="bmc-container"&gt;
+    &lt;a class="bmc-btn bmc-btn-lg" href="#"&gt;Explore the Programs&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code>
+        <div class="docs-token-grid">
+          <code>.bmc-v3-split-hero</code><code>.bmc-v3-split-hero__inner</code><code>.bmc-v3-split-hero__copy</code><code>.bmc-v3-split-hero__title</code><code>.bmc-v3-split-hero__lead</code><code>.bmc-v3-split-hero__mark</code><code>.bmc-v3-split-list</code><code>.bmc-v3-split-list--alternate</code><code>.bmc-v3-split</code><code>.bmc-v3-split--reverse</code><code>.bmc-v3-split__inner</code><code>.bmc-v3-split__media</code><code>.bmc-v3-split__media--contain</code><code>.bmc-v3-split__content</code><code>.bmc-v3-split__title</code><code>.bmc-v3-split__lead</code><code>.bmc-v3-split__group</code><code>.bmc-v3-split__label</code><code>.bmc-v3-supporter</code><code>.bmc-v3-supporter__link</code><code>.bmc-list-columns-2</code><code>.bmc-v3-cta-band</code>
+        </div>
+
         <h3>Story stats and divider</h3>
         <div class="docs-example">
           <div class="bmc-v3-stats bmc-v3-stats--center bmc-v3-stats--bordered" aria-label="Sample profile highlights">
