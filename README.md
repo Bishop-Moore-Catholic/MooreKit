@@ -224,7 +224,12 @@ Available components include:
 - `bmc-v3-pullquote`
 - `bmc-v3-bio`
 - `bmc-v3-stats` and `bmc-v3-stat`
+- `bmc-v3-split-hero`
+- `bmc-v3-split-list` and `bmc-v3-split`
+- `bmc-v3-supporter`
+- `bmc-v3-cta-band`
 - `bmc-v3-story-divider`
+- `bmc-list-columns-2`
 
 Example:
 
@@ -240,6 +245,37 @@ Example:
     <time datetime="2026-07-20">July 20, 2026</time>
   </div>
 </header>
+```
+
+For a bold landing-page sequence, pair the split hero with alternating media-and-copy sections. The media stage crops by default; add `bmc-v3-split__media--contain` for logos or other artwork that should remain fully visible on a white background.
+
+```html
+<header class="bmc-v3-split-hero">
+  <div class="bmc-container bmc-v3-split-hero__inner">
+    <div class="bmc-v3-split-hero__copy">
+      <h1 class="bmc-v3-split-hero__title">Programs of <strong>Distinction</strong></h1>
+      <p class="bmc-v3-split-hero__lead">A concise introduction to the program collection.</p>
+    </div>
+    <figure class="bmc-v3-split-hero__mark">
+      <img src="program-mark.png" alt="Programs of Distinction">
+    </figure>
+  </div>
+</header>
+
+<div class="bmc-v3-split-list bmc-v3-split-list--alternate">
+  <section class="bmc-v3-split">
+    <div class="bmc-container bmc-v3-split__inner">
+      <figure class="bmc-v3-split__media bmc-v3-split__media--contain">
+        <img src="program-logo.png" alt="Program name logo">
+      </figure>
+      <div class="bmc-v3-split__content">
+        <h2 class="bmc-v3-split__title">Program Name</h2>
+        <p class="bmc-v3-split__lead">Program description.</p>
+        <p class="bmc-v3-supporter">Supported by Donor Name</p>
+      </div>
+    </div>
+  </section>
+</div>
 ```
 
 Open `docs/index.html#editorial-storytelling` for copy-and-paste examples, modifiers, responsive behavior, and accessibility guidance.
